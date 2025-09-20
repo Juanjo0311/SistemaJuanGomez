@@ -56,6 +56,7 @@ public class Jjm_JDlgVenda_Produto extends javax.swing.JDialog {
 
         jjm_jLblVenda_produto.setText("Venda_Produto");
 
+        jjm_jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar.png"))); // NOI18N
         jjm_jBtnAlterar.setText("Alterar");
         jjm_jBtnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,6 +64,7 @@ public class Jjm_JDlgVenda_Produto extends javax.swing.JDialog {
             }
         });
 
+        jjm_jBtnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Excluir.png"))); // NOI18N
         jjm_jBtnExcluir.setText("Excluir");
         jjm_jBtnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +72,7 @@ public class Jjm_JDlgVenda_Produto extends javax.swing.JDialog {
             }
         });
 
+        jjm_jBtnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ok.png"))); // NOI18N
         jjm_jBtnConfirmar.setText("Confirmar");
         jjm_jBtnConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +80,7 @@ public class Jjm_JDlgVenda_Produto extends javax.swing.JDialog {
             }
         });
 
+        jjm_jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
         jjm_jBtnCancelar.setText("Cancelar");
         jjm_jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +88,7 @@ public class Jjm_JDlgVenda_Produto extends javax.swing.JDialog {
             }
         });
 
+        jjm_jBtnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisar.png"))); // NOI18N
         jjm_jBtnPesquisar.setText("Pesquisar");
         jjm_jBtnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +96,7 @@ public class Jjm_JDlgVenda_Produto extends javax.swing.JDialog {
             }
         });
 
+        jjm_jBtnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/incluir.png"))); // NOI18N
         jjm_jBtnIncluir.setText("Incluir");
         jjm_jBtnIncluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,7 +182,7 @@ public class Jjm_JDlgVenda_Produto extends javax.swing.JDialog {
                     .addComponent(jjm_jBtnExcluir)
                     .addComponent(jjm_jBtnPesquisar)
                     .addComponent(jjm_jBtnAlterar))
-                .addGap(0, 124, Short.MAX_VALUE))
+                .addGap(0, 96, Short.MAX_VALUE))
         );
 
         pack();

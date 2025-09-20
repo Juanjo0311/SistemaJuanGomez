@@ -62,6 +62,7 @@ public class Jjm_JDlgVenda extends javax.swing.JDialog {
             }
         });
 
+        jjm_jBtnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ok.png"))); // NOI18N
         jjm_jBtnConfirmar.setText("Confirmar");
         jjm_jBtnConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,6 +70,7 @@ public class Jjm_JDlgVenda extends javax.swing.JDialog {
             }
         });
 
+        jjm_jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
         jjm_jBtnCancelar.setText("Cancelar");
         jjm_jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +78,7 @@ public class Jjm_JDlgVenda extends javax.swing.JDialog {
             }
         });
 
+        jjm_jBtnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisar.png"))); // NOI18N
         jjm_jBtnPesquisar.setText("Pesquisar");
         jjm_jBtnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +86,7 @@ public class Jjm_JDlgVenda extends javax.swing.JDialog {
             }
         });
 
+        jjm_jBtnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/incluir.png"))); // NOI18N
         jjm_jBtnIncluir.setText("Incluir");
         jjm_jBtnIncluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +94,7 @@ public class Jjm_JDlgVenda extends javax.swing.JDialog {
             }
         });
 
+        jjm_jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar.png"))); // NOI18N
         jjm_jBtnAlterar.setText("Alterar");
         jjm_jBtnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +102,7 @@ public class Jjm_JDlgVenda extends javax.swing.JDialog {
             }
         });
 
+        jjm_jBtnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Excluir.png"))); // NOI18N
         jjm_jBtnExcluir.setText("Excluir");
         jjm_jBtnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,7 +136,7 @@ public class Jjm_JDlgVenda extends javax.swing.JDialog {
                         .addComponent(jjm_jFmtDatadavenda, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jjm_jTxtValortotal, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 262, Short.MAX_VALUE))
+                .addGap(0, 21, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,7 +185,7 @@ public class Jjm_JDlgVenda extends javax.swing.JDialog {
                     .addComponent(jjm_jBtnCancelar)
                     .addComponent(jjm_jBtnExcluir)
                     .addComponent(jjm_jBtnPesquisar))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
