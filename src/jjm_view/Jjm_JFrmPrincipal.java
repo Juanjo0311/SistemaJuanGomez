@@ -15,9 +15,12 @@ public class Jjm_JFrmPrincipal extends javax.swing.JFrame {
      */
     public Jjm_JFrmPrincipal() {
         initComponents();
+<<<<<<< HEAD
          setExtendedState(MAXIMIZED_BOTH);
         setTitle("Tela Principal Da Taylor Swift");
 
+=======
+>>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
     }
 
     /**
@@ -138,37 +141,59 @@ public class Jjm_JFrmPrincipal extends javax.swing.JFrame {
 
     private void jMnuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuUsuariosActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
           Jjm_JDlgUsuarios dlg = new Jjm_JDlgUsuarios(this, true); 
         dlg.setLocationRelativeTo(this); 
         dlg.setVisible(true);
+=======
+        
+>>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
     }//GEN-LAST:event_jMnuUsuariosActionPerformed
 
     private void jMnuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuClienteActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
       Jjm_JDlgClientes dlg = new Jjm_JDlgClientes(this, true); 
         dlg.setLocationRelativeTo(this); 
         dlg.setVisible(true);
+=======
+     
+>>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
     }//GEN-LAST:event_jMnuClienteActionPerformed
 
     private void jMnuProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuProdutosActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
       Jjm_JDlgProdutos dlg = new Jjm_JDlgProdutos(this, true); 
         dlg.setLocationRelativeTo(this); 
         dlg.setVisible(true);
+=======
+        //JDlgProdutos dlg = new JDlgProdutos(this, true);
+        //dlg.setLocationRelativeTo(this);
+        //dlg.setVisible(true);
+>>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
        
     }//GEN-LAST:event_jMnuProdutosActionPerformed
 
     private void jMnuVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuVendedorActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
         Jjm_JDlgVendedor dlg = new Jjm_JDlgVendedor(this, true); 
         dlg.setLocationRelativeTo(this); 
         dlg.setVisible(true);
+=======
+       
+>>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
     }//GEN-LAST:event_jMnuVendedorActionPerformed
 
     private void jMnuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuSairActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
              dispose();
 
+=======
+      
+>>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
 
     }//GEN-LAST:event_jMnuSairActionPerformed
 

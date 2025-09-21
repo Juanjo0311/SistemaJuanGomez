@@ -21,8 +21,11 @@ public class Jjm_JDlgUsuarios extends javax.swing.JDialog {
         setTitle("Cadastro de Usuarios");
         setLocationRelativeTo(null);
         Util.habilitar(false, jjm_jTxtApelido,jjm_jTxtCodigo,jjm_jTxtNome,jjm_PwdSenha,jjm_jChbAtivo,jjm_jFmtDataDenascimento,jjm_jFmtCpf,jjm_jCboNivel);
+<<<<<<< HEAD
      jjm_jBtnConfirmar.setEnabled(false);
     jjm_jBtnCancelar.setEnabled(false);
+=======
+>>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
     }
 
     /**
@@ -292,7 +295,11 @@ Util.limpar(jjm_jTxtCodigo,jjm_jTxtNome,jjm_jTxtApelido);
     }//GEN-LAST:event_jjm_jBtnIncluirActionPerformed
 
     private void jjm_jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnAlterarActionPerformed
+<<<<<<< HEAD
         Util.habilitar(true,jjm_jTxtApelido,jjm_jTxtNome,jjm_PwdSenha,jjm_jChbAtivo,jjm_jFmtDataDenascimento,jjm_jFmtCpf,jjm_jCboNivel,jjm_jBtnConfirmar,jjm_jBtnCancelar );
+=======
+        Util.habilitar(true,jjm_jTxtApelido,jjm_jTxtCodigo,jjm_jTxtNome,jjm_PwdSenha,jjm_jChbAtivo,jjm_jFmtDataDenascimento,jjm_jFmtCpf,jjm_jCboNivel,jjm_jBtnConfirmar,jjm_jBtnCancelar );
+>>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
          Util.habilitar(false, jjm_jBtnAlterar,jjm_jBtnExcluir,jjm_jBtnPesquisar,jjm_jBtnIncluir);
 
     }//GEN-LAST:event_jjm_jBtnAlterarActionPerformed

@@ -4,8 +4,11 @@
  */
 package jjm_view;
 
+<<<<<<< HEAD
 import tools.Util;
 
+=======
+>>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
 /**
  *
  * @author user
@@ -18,6 +21,7 @@ public class Jjm_JDlgProdutos extends javax.swing.JDialog {
     public Jjm_JDlgProdutos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+<<<<<<< HEAD
          setTitle("Cadastro de Produtos");
         setLocationRelativeTo(null);
 
@@ -28,6 +32,8 @@ public class Jjm_JDlgProdutos extends javax.swing.JDialog {
         Util.habilitar(false, jjm_jTxtProduto, jjm_jTxtNome, jjm_jTxtDescricao,
                 jjm_jTxtPreco, jjm_jFmtDatadecadastro, jjm_jTxtMarca, jjm_jTxtCategoria);
     
+=======
+>>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
     }
 
     /**
@@ -244,6 +250,7 @@ public class Jjm_JDlgProdutos extends javax.swing.JDialog {
 
     private void jjm_jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnIncluirActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
         Util.habilitar(true, jjm_jTxtProduto, jjm_jTxtNome, jjm_jTxtDescricao,
                 jjm_jTxtPreco, jjm_jFmtDatadecadastro, jjm_jTxtMarca, jjm_jTxtCategoria);
 
@@ -266,6 +273,17 @@ public class Jjm_JDlgProdutos extends javax.swing.JDialog {
         Util.habilitar(true, jjm_jBtnIncluir, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar);
         Util.habilitar(false, jjm_jBtnConfirmar, jjm_jBtnCancelar);
           
+=======
+      
+    }//GEN-LAST:event_jjm_jBtnIncluirActionPerformed
+
+    private void jjm_jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnExcluirActionPerformed
+      
+    }//GEN-LAST:event_jjm_jBtnExcluirActionPerformed
+
+    private void jjm_jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnConfirmarActionPerformed
+      
+>>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
     }//GEN-LAST:event_jjm_jBtnConfirmarActionPerformed
 
     private void jjm_jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnPesquisarActionPerformed
@@ -286,11 +304,16 @@ public class Jjm_JDlgProdutos extends javax.swing.JDialog {
             jjm_jTxtCategoria.setText(produto.getjjm_Categoria());
 
         }*/
+<<<<<<< HEAD
  Util.mensagem("Pesquisar Produto ainda não implementado.");
+=======
+
+>>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
       
     }//GEN-LAST:event_jjm_jBtnPesquisarActionPerformed
 
     private void jjm_jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnAlterarActionPerformed
+<<<<<<< HEAD
  Util.habilitar(true, jjm_jTxtNome, jjm_jTxtDescricao,
                 jjm_jTxtPreco, jjm_jFmtDatadecadastro, jjm_jTxtMarca, jjm_jTxtCategoria);
 
@@ -306,6 +329,13 @@ public class Jjm_JDlgProdutos extends javax.swing.JDialog {
         Util.habilitar(true, jjm_jBtnIncluir, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar);
         Util.habilitar(false, jjm_jBtnConfirmar, jjm_jBtnCancelar);
            
+=======
+        
+    }//GEN-LAST:event_jjm_jBtnAlterarActionPerformed
+
+    private void jjm_jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnCancelarActionPerformed
+       
+>>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
     }//GEN-LAST:event_jjm_jBtnCancelarActionPerformed
 
     /**

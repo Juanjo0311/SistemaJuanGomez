@@ -4,8 +4,11 @@
  */
 package jjm_view;
 
+<<<<<<< HEAD
 import tools.Util;
 
+=======
+>>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
 /**
  *
  * @author user
@@ -18,6 +21,7 @@ public class Jjm_JDlgVenda_Produto extends javax.swing.JDialog {
     public Jjm_JDlgVenda_Produto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+<<<<<<< HEAD
         setTitle("Cadastro de Venda_Produto");
 
         Util.habilitar(false, jjm_jTxtVenda_Produto, jjm_jTxtVenda, jjm_jTxtProduto,
@@ -29,6 +33,8 @@ public class Jjm_JDlgVenda_Produto extends javax.swing.JDialog {
     
     Util.habilitar(true, jjm_jBtnIncluir, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar);
 
+=======
+>>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
     }
 
     /**
@@ -203,26 +209,38 @@ public class Jjm_JDlgVenda_Produto extends javax.swing.JDialog {
 
     private void jjm_jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnAlterarActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
           Util.habilitar(true, jjm_jTxtVenda_Produto, jjm_jTxtVenda, jjm_jTxtProduto,
                    jjm_jTxtQuantidade, jjm_jTxtValor_unitario,
                    jjm_jBtnConfirmar, jjm_jBtnCancelar);
     Util.habilitar(false, jjm_jBtnIncluir, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar);
 
+=======
+        
+>>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
     }//GEN-LAST:event_jjm_jBtnAlterarActionPerformed
 
     private void jjm_jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnExcluirActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
          Util.perguntar("Deseja excluir o registro?");
+=======
+        
+>>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
 
     }//GEN-LAST:event_jjm_jBtnExcluirActionPerformed
 
     private void jjm_jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
          Util.habilitar(false, jjm_jTxtVenda_Produto, jjm_jTxtVenda, jjm_jTxtProduto,
                     jjm_jTxtQuantidade, jjm_jTxtValor_unitario,
                     jjm_jBtnConfirmar, jjm_jBtnCancelar);
     Util.habilitar(true, jjm_jBtnIncluir, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar);
 
+=======
+        
+>>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
     }//GEN-LAST:event_jjm_jBtnConfirmarActionPerformed
 
     private void jjm_jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnCancelarActionPerformed
@@ -232,11 +250,16 @@ public class Jjm_JDlgVenda_Produto extends javax.swing.JDialog {
 
     private void jjm_jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnPesquisarActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
          Util.mensagem("Pesquisa não implementada.");
+=======
+      
+>>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
     }//GEN-LAST:event_jjm_jBtnPesquisarActionPerformed
 
     private void jjm_jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnIncluirActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
    
 
     Util.habilitar(true, jjm_jTxtVenda_Produto, jjm_jTxtVenda, jjm_jTxtProduto,
@@ -245,6 +268,9 @@ public class Jjm_JDlgVenda_Produto extends javax.swing.JDialog {
 
     Util.habilitar(false, jjm_jBtnIncluir, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar);
 
+=======
+      
+>>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
     }//GEN-LAST:event_jjm_jBtnIncluirActionPerformed
 
     /**
