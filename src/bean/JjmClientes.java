@@ -41,7 +41,7 @@ public class JjmClientes  implements java.io.Serializable {
      private String jjmCidade;
      private Date jjmDataUltimaCompra;
      private String jjmBairro;
-     private Set jjmVendas = new HashSet(0);
+   
 
     public JjmClientes() {
     }
@@ -61,7 +61,7 @@ public class JjmClientes  implements java.io.Serializable {
        this.jjmCidade = jjmCidade;
        this.jjmDataUltimaCompra = jjmDataUltimaCompra;
        this.jjmBairro = jjmBairro;
-       this.jjmVendas = jjmVendas;
+      
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -216,14 +216,7 @@ public class JjmClientes  implements java.io.Serializable {
         this.jjmBairro = jjmBairro;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="jjmClientes")
-    public Set getJjmVendas() {
-        return this.jjmVendas;
-    }
-    
-    public void setJjmVendas(Set jjmVendas) {
-        this.jjmVendas = jjmVendas;
-    }
+
 
 
 

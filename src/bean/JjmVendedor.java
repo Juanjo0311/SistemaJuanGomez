@@ -2,7 +2,6 @@ package bean;
 // Generated 06/10/2025 20:15:00 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,37 +26,36 @@ import javax.persistence.TemporalType;
 public class JjmVendedor  implements java.io.Serializable {
 
 
-     private Integer jjmIdVendedor;
+     private int jjmIdVendedor;
      private String jjmNome;
      private String jjmEmail;
      private String jjmTelefone;
      private Date jjmDataCadrastro;
-     private BigDecimal jjmSalario;
+     private double jjmSalario;
      private String jjmEndereco;
-     private Set jjmVendas = new HashSet(0);
 
     public JjmVendedor() {
     }
 
-    public JjmVendedor(String jjmNome, String jjmEmail, String jjmTelefone, Date jjmDataCadrastro, BigDecimal jjmSalario, String jjmEndereco, Set jjmVendas) {
+    public JjmVendedor(String jjmNome, String jjmEmail, String jjmTelefone, Date jjmDataCadrastro, double jjmSalario, String jjmEndereco, Set jjmVendas) {
        this.jjmNome = jjmNome;
        this.jjmEmail = jjmEmail;
        this.jjmTelefone = jjmTelefone;
        this.jjmDataCadrastro = jjmDataCadrastro;
        this.jjmSalario = jjmSalario;
        this.jjmEndereco = jjmEndereco;
-       this.jjmVendas = jjmVendas;
+  
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="jjm_id_vendedor", unique=true, nullable=false)
-    public Integer getJjmIdVendedor() {
+    public int getJjmIdVendedor() {
         return this.jjmIdVendedor;
     }
     
-    public void setJjmIdVendedor(Integer jjmIdVendedor) {
+    public void setJjmIdVendedor(int jjmIdVendedor) {
         this.jjmIdVendedor = jjmIdVendedor;
     }
 
@@ -103,11 +101,11 @@ public class JjmVendedor  implements java.io.Serializable {
 
     
     @Column(name="jjm_salario", precision=9)
-    public BigDecimal getJjmSalario() {
+    public double getJjmSalario() {
         return this.jjmSalario;
     }
     
-    public void setJjmSalario(BigDecimal jjmSalario) {
+    public void setJjmSalario(double jjmSalario) {
         this.jjmSalario = jjmSalario;
     }
 
@@ -121,14 +119,7 @@ public class JjmVendedor  implements java.io.Serializable {
         this.jjmEndereco = jjmEndereco;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="jjmVendedor")
-    public Set getJjmVendas() {
-        return this.jjmVendas;
-    }
-    
-    public void setJjmVendas(Set jjmVendas) {
-        this.jjmVendas = jjmVendas;
-    }
+
 
 
 

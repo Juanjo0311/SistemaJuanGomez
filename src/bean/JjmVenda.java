@@ -2,7 +2,6 @@ package bean;
 // Generated 06/10/2025 20:15:00 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,33 +28,31 @@ import javax.persistence.TemporalType;
 public class JjmVenda  implements java.io.Serializable {
 
 
-     private Integer jjmIdVenda;
+     private int jjmIdVenda;
      private JjmClientes jjmClientes;
      private JjmVendedor jjmVendedor;
      private Date jjmDataVenda;
-     private BigDecimal jjmValorTotal;
-     private Set jjmVendaProdutoses = new HashSet(0);
+     private double jjmValorTotal;
 
     public JjmVenda() {
     }
 
-    public JjmVenda(JjmClientes jjmClientes, JjmVendedor jjmVendedor, Date jjmDataVenda, BigDecimal jjmValorTotal, Set jjmVendaProdutoses) {
+    public JjmVenda(JjmClientes jjmClientes, JjmVendedor jjmVendedor, Date jjmDataVenda, double jjmValorTotal, Set jjmVendaProdutoses) {
        this.jjmClientes = jjmClientes;
        this.jjmVendedor = jjmVendedor;
        this.jjmDataVenda = jjmDataVenda;
        this.jjmValorTotal = jjmValorTotal;
-       this.jjmVendaProdutoses = jjmVendaProdutoses;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="jjm_id_venda", unique=true, nullable=false)
-    public Integer getJjmIdVenda() {
+    public int getJjmIdVenda() {
         return this.jjmIdVenda;
     }
     
-    public void setJjmIdVenda(Integer jjmIdVenda) {
+    public void setJjmIdVenda(int jjmIdVenda) {
         this.jjmIdVenda = jjmIdVenda;
     }
 
@@ -91,22 +88,15 @@ public class JjmVenda  implements java.io.Serializable {
 
     
     @Column(name="jjm_valor_total", precision=10)
-    public BigDecimal getJjmValorTotal() {
+    public double getJjmValorTotal() {
         return this.jjmValorTotal;
     }
     
-    public void setJjmValorTotal(BigDecimal jjmValorTotal) {
+    public void setJjmValorTotal(double jjmValorTotal) {
         this.jjmValorTotal = jjmValorTotal;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="jjmVenda")
-    public Set getJjmVendaProdutoses() {
-        return this.jjmVendaProdutoses;
-    }
-    
-    public void setJjmVendaProdutoses(Set jjmVendaProdutoses) {
-        this.jjmVendaProdutoses = jjmVendaProdutoses;
-    }
+
 
 
 

@@ -4,6 +4,7 @@
  */
 package jjm_view;
 
+import bean.JjmClientes;
 import tools.Util;
 
 /**
@@ -32,6 +33,46 @@ public class Jjm_JDlgClientes extends javax.swing.JDialog {
     jjm_jBtnCancelar.setEnabled(false);
 
     }
+    public JjmClientes viewBean() {
+    JjmClientes jjmClientes = new JjmClientes();
+
+    jjmClientes.setJjmIdCliente(Util.strToInt(jjm_jTxtCodigo.getText()));
+    jjmClientes.setJjmNome(jjm_jTxtNome.getText());
+    jjmClientes.setJjmDataNasc(Util.strToDate(jjm_jFmtDatadenascimento.getText()));
+    jjmClientes.setJjmCidade(jjm_jTxtCidade.getText());
+    jjmClientes.setJjmFormaPagamento(jjm_jTxtFormadepagamento.getText());
+    jjmClientes.setJjmDataUltimaCompra(Util.strToDate(jjm_jFmtDatadaultimacompra.getText()));
+    jjmClientes.setJjmEmail(jjm_jTxtEmail.getText());
+    jjmClientes.setJjmRg(jjm_jTxtRg.getText());
+    jjmClientes.setJjmBairro(jjm_jTxtBairro.getText());
+    jjmClientes.setJjmSexo(jjm_jTxtSexo.getText());
+    jjmClientes.setJjmTipoCliente(jjm_jTxtTipodecliente.getText());
+    jjmClientes.setJjmCep(jjm_jTxtCep.getText());
+    jjmClientes.setJjmTelefone(jjm_jTxtTelefone.getText());
+    jjmClientes.setJjmEndereco(jjm_jTxtEndereco.getText());
+    jjmClientes.setJjmEstado(jjm_jTxtEstado.getText());
+
+    return jjmClientes;
+}
+
+public void beanView(JjmClientes jjmClientes) {
+    jjm_jTxtCodigo.setText(Util.intToStr(jjmClientes.getJjmIdCliente()));
+    jjm_jTxtNome.setText(jjmClientes.getJjmNome());
+    jjm_jFmtDatadenascimento.setText(Util.dateToStr(jjmClientes.getJjmDataNasc()));
+    jjm_jTxtCidade.setText(jjmClientes.getJjmCidade());
+    jjm_jTxtFormadepagamento.setText(jjmClientes.getJjmFormaPagamento());
+    jjm_jFmtDatadaultimacompra.setText(Util.dateToStr(jjmClientes.getJjmDataUltimaCompra()));
+    jjm_jTxtEmail.setText(jjmClientes.getJjmEmail());
+    jjm_jTxtRg.setText(jjmClientes.getJjmRg());
+    jjm_jTxtBairro.setText(jjmClientes.getJjmBairro());
+    jjm_jTxtSexo.setText(jjmClientes.getJjmSexo());
+    jjm_jTxtTipodecliente.setText(jjmClientes.getJjmTipoCliente());
+    jjm_jTxtCep.setText(jjmClientes.getJjmCep());
+    jjm_jTxtTelefone.setText(jjmClientes.getJjmTelefone());
+    jjm_jTxtEndereco.setText(jjmClientes.getJjmEndereco());
+    jjm_jTxtEstado.setText(jjmClientes.getJjmEstado());
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.

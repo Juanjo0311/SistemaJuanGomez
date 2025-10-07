@@ -4,6 +4,7 @@
  */
 package jjm_view;
 
+import bean.JjmProdutos;
 import tools.Util;
 
 /**
@@ -31,6 +32,29 @@ public class Jjm_JDlgProdutos extends javax.swing.JDialog {
                 jjm_jTxtPreco, jjm_jFmtDatadecadastro, jjm_jTxtMarca, jjm_jTxtCategoria);
     
     }
+public JjmProdutos viewBean() {
+    JjmProdutos jjmProdutos = new JjmProdutos();
+
+    jjmProdutos.setJjmIdProduto(Util.strToInt(jjm_jTxtProduto.getText()));
+    jjmProdutos.setJjmNome(jjm_jTxtNome.getText());
+    jjmProdutos.setJjmDescricao(jjm_jTxtDescricao.getText());
+    jjmProdutos.setJjmPreco(Util.strToDuble(jjm_jTxtPreco.getText()));
+    jjmProdutos.setJjmDataCadastro(Util.strToDate(jjm_jFmtDatadecadastro.getText()));
+    jjmProdutos.setJjmMarca(jjm_jTxtMarca.getText());
+    jjmProdutos.setJjmCategoria(jjm_jTxtCategoria.getText());
+
+    return jjmProdutos;
+}
+
+public void beanView(JjmProdutos jjmProdutos) {
+    jjm_jTxtProduto.setText(Util.intToStr(jjmProdutos.getJjmIdProduto()));
+    jjm_jTxtNome.setText(jjmProdutos.getJjmNome());
+    jjm_jTxtDescricao.setText(jjmProdutos.getJjmDescricao());
+    jjm_jTxtPreco.setText(Util.doubleToStr(jjmProdutos.getJjmPreco()));
+    jjm_jFmtDatadecadastro.setText(Util.dateToStr(jjmProdutos.getJjmDataCadastro()));
+    jjm_jTxtMarca.setText(jjmProdutos.getJjmMarca());
+    jjm_jTxtCategoria.setText(jjmProdutos.getJjmCategoria());
+}
 
     /**
      * This method is called from within the constructor to initialize the form.

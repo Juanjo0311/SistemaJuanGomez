@@ -2,7 +2,7 @@ package bean;
 // Generated 06/10/2025 20:15:00 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,16 +23,16 @@ import javax.persistence.Table;
 public class JjmVendaProdutos  implements java.io.Serializable {
 
 
-     private Integer jjmIdVendaProduto;
+     private int jjmIdVendaProduto;
      private JjmProdutos jjmProdutos;
      private JjmVenda jjmVenda;
-     private Integer jjmQuantidade;
-     private BigDecimal jjmValorUnitario;
+     private int jjmQuantidade;
+     private double jjmValorUnitario;
 
     public JjmVendaProdutos() {
     }
 
-    public JjmVendaProdutos(JjmProdutos jjmProdutos, JjmVenda jjmVenda, Integer jjmQuantidade, BigDecimal jjmValorUnitario) {
+    public JjmVendaProdutos(JjmProdutos jjmProdutos, JjmVenda jjmVenda, int jjmQuantidade, double jjmValorUnitario) {
        this.jjmProdutos = jjmProdutos;
        this.jjmVenda = jjmVenda;
        this.jjmQuantidade = jjmQuantidade;
@@ -43,11 +43,11 @@ public class JjmVendaProdutos  implements java.io.Serializable {
 
     
     @Column(name="jjm_id_venda_produto", unique=true, nullable=false)
-    public Integer getJjmIdVendaProduto() {
+    public int getJjmIdVendaProduto() {
         return this.jjmIdVendaProduto;
     }
     
-    public void setJjmIdVendaProduto(Integer jjmIdVendaProduto) {
+    public void setJjmIdVendaProduto(int jjmIdVendaProduto) {
         this.jjmIdVendaProduto = jjmIdVendaProduto;
     }
 
@@ -73,21 +73,21 @@ public class JjmVendaProdutos  implements java.io.Serializable {
 
     
     @Column(name="jjm_quantidade")
-    public Integer getJjmQuantidade() {
+    public int getJjmQuantidade() {
         return this.jjmQuantidade;
     }
     
-    public void setJjmQuantidade(Integer jjmQuantidade) {
+    public void setJjmQuantidade(int jjmQuantidade) {
         this.jjmQuantidade = jjmQuantidade;
     }
 
     
     @Column(name="jjm_valor_unitario", precision=8)
-    public BigDecimal getJjmValorUnitario() {
+    public double getJjmValorUnitario() {
         return this.jjmValorUnitario;
     }
     
-    public void setJjmValorUnitario(BigDecimal jjmValorUnitario) {
+    public void setJjmValorUnitario(double jjmValorUnitario) {
         this.jjmValorUnitario = jjmValorUnitario;
     }
 
