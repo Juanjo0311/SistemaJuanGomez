@@ -15,12 +15,12 @@ public class Jjm_JDlgClientes extends javax.swing.JDialog {
     /**
      * Creates new form Jjm_JDlgClientes
      */
+     boolean pesquisando = false;
     public Jjm_JDlgClientes(java.awt.Frame parent, boolean modal) {
        super(parent, modal);
         initComponents();
         setTitle("Cadastro de Usuarios");
         setLocationRelativeTo(null);
-<<<<<<< HEAD
  Util.habilitar(false, jjm_jTxtCodigo, jjm_jTxtNome, jjm_jFmtDatadenascimento,
                    jjm_jTxtCidade, jjm_jTxtFormadepagamento, jjm_jFmtDatadaultimacompra,
                    jjm_jTxtEmail, jjm_jTxtRg, jjm_jTxtBairro, jjm_jTxtSexo,
@@ -31,9 +31,6 @@ public class Jjm_JDlgClientes extends javax.swing.JDialog {
     jjm_jBtnConfirmar.setEnabled(false);
     jjm_jBtnCancelar.setEnabled(false);
 
-=======
-        Util.habilitar(false, jjm_jTxtCodigo,jjm_jTxtNome,jjm_jFmtDatadenascimento,jjm_jTxtCidade,jjm_jTxtNome,jjm_jTxtFormadepagamento,jjm_jFmtDatadaultimacompra,jjm_jTxtEmail,jjm_jTxtRg,jjm_jTxtBairro,jjm_jTxtSexo,jjm_jTxtTipodecliente,jjm_jTxtCep,jjm_jTxtTelefone,jjm_jTxtEndereco,jjm_jTxtEstado);
->>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
     }
 
     /**
@@ -433,11 +430,7 @@ public class Jjm_JDlgClientes extends javax.swing.JDialog {
     }//GEN-LAST:event_jjm_jTxtSexoActionPerformed
 
     private void jjm_jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnAlterarActionPerformed
-<<<<<<< HEAD
        Util.habilitar(true,  jjm_jTxtNome, jjm_jFmtDatadenascimento, jjm_jTxtCidade, 
-=======
-       Util.habilitar(true, jjm_jTxtCodigo, jjm_jTxtNome, jjm_jFmtDatadenascimento, jjm_jTxtCidade, 
->>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
         jjm_jTxtFormadepagamento, jjm_jFmtDatadaultimacompra, jjm_jTxtEmail, 
         jjm_jTxtRg, jjm_jTxtBairro, jjm_jTxtSexo, jjm_jTxtTipodecliente, 
         jjm_jTxtCep, jjm_jTxtTelefone, jjm_jTxtEndereco, jjm_jTxtEstado,
@@ -446,8 +439,17 @@ public class Jjm_JDlgClientes extends javax.swing.JDialog {
     }//GEN-LAST:event_jjm_jBtnAlterarActionPerformed
 
     private void jjm_jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnExcluirActionPerformed
-<<<<<<< HEAD
-  Util.perguntar("Deseja excluir o cliente?");       
+
+   if (pesquisando == false) {
+            Util.mensagem("Você precisa pesquisar um usuário primeiro");
+        } else {
+                Util.perguntar("Você deseja excluir?");
+                Util.limpar(  jjm_jTxtCodigo, jjm_jTxtNome, jjm_jFmtDatadenascimento, jjm_jTxtCidade, 
+        jjm_jTxtFormadepagamento, jjm_jFmtDatadaultimacompra, jjm_jTxtEmail, 
+        jjm_jTxtRg, jjm_jTxtBairro, jjm_jTxtSexo, jjm_jTxtTipodecliente, 
+        jjm_jTxtCep, jjm_jTxtTelefone, jjm_jTxtEndereco, jjm_jTxtEstado,
+        jjm_jBtnConfirmar, jjm_jBtnCancelar);  
+        } 
     }//GEN-LAST:event_jjm_jBtnExcluirActionPerformed
 
     private void jjm_jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnConfirmarActionPerformed
@@ -459,17 +461,10 @@ Util.habilitar(false,
         jjm_jBtnConfirmar, jjm_jBtnCancelar
     );
     Util.habilitar(true, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar, jjm_jBtnIncluir);
-=======
-       
-    }//GEN-LAST:event_jjm_jBtnExcluirActionPerformed
-
-    private void jjm_jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnConfirmarActionPerformed
->>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
        
     }//GEN-LAST:event_jjm_jBtnConfirmarActionPerformed
 
     private void jjm_jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnCancelarActionPerformed
-<<<<<<< HEAD
         Util.habilitar(false, 
         jjm_jTxtCodigo, jjm_jTxtNome, jjm_jFmtDatadenascimento, jjm_jTxtCidade, 
         jjm_jTxtFormadepagamento, jjm_jFmtDatadaultimacompra, jjm_jTxtEmail, 
@@ -479,9 +474,6 @@ Util.habilitar(false,
     );
     Util.habilitar(true, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar, jjm_jBtnIncluir);
           
-=======
-        
->>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
     }//GEN-LAST:event_jjm_jBtnCancelarActionPerformed
 
     private void jjm_jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnPesquisarActionPerformed
@@ -509,11 +501,10 @@ Util.habilitar(false,
             jjm_jFmtDatadenascimento.setText(null);
             jjm_jTxtBairro.setText(clientes.getjjm_Bairro());
         }*/
-<<<<<<< HEAD
-       Util.mensagem("Pesquisar Cliente ainda não implementado.");
-=======
-     
->>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
+      JDlgClientesPesquisar jDlgClientePesquisar = new JDlgClientesPesquisar(null, true);
+        jDlgClientePesquisar.setTelaPai(this);
+        jDlgClientePesquisar.setVisible(true);
+        pesquisando = true;
     }//GEN-LAST:event_jjm_jBtnPesquisarActionPerformed
 
     private void jjm_jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnIncluirActionPerformed
@@ -527,15 +518,7 @@ Util.habilitar(false,
     );
     Util.habilitar(false, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar, jjm_jBtnIncluir);
 
-<<<<<<< HEAD
     
-=======
-    Util.limpar(
-        jjm_jTxtCodigo, jjm_jTxtNome, jjm_jTxtCidade, jjm_jTxtFormadepagamento, 
-        jjm_jTxtEmail, jjm_jTxtRg, jjm_jTxtBairro, jjm_jTxtSexo, jjm_jTxtTipodecliente, 
-        jjm_jTxtCep, jjm_jTxtTelefone, jjm_jTxtEndereco, jjm_jTxtEstado
-    );
->>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
         
        
     }//GEN-LAST:event_jjm_jBtnIncluirActionPerformed

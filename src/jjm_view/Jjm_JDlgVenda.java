@@ -4,11 +4,8 @@
  */
 package jjm_view;
 
-<<<<<<< HEAD
 import tools.Util;
 
-=======
->>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
 /**
  *
  * @author user
@@ -21,7 +18,6 @@ public class Jjm_JDlgVenda extends javax.swing.JDialog {
     public Jjm_JDlgVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-<<<<<<< HEAD
         setTitle("Cadastro de Venda");
         Util.habilitar(false, jjm_jTxtIdVenda, jjm_jFmtDatadavenda, jjm_jTxtValortotal,
                    jjm_jCboCliente, jjm_jCboVendedor);
@@ -30,8 +26,6 @@ public class Jjm_JDlgVenda extends javax.swing.JDialog {
 
     Util.habilitar(true, jjm_jBtnIncluir, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar);
 
-=======
->>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
     }
 
     /**
@@ -212,28 +206,22 @@ public class Jjm_JDlgVenda extends javax.swing.JDialog {
     }//GEN-LAST:event_jjm_jTxtValortotalActionPerformed
 
     private void jjm_jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnConfirmarActionPerformed
-<<<<<<< HEAD
 Util.habilitar(false, jjm_jTxtIdVenda, jjm_jFmtDatadavenda, jjm_jTxtValortotal,
                    jjm_jCboCliente, jjm_jCboVendedor);
 
     Util.habilitar(false, jjm_jBtnConfirmar, jjm_jBtnCancelar);
 
     Util.habilitar(true, jjm_jBtnIncluir, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar);
-=======
->>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
        
     }//GEN-LAST:event_jjm_jBtnConfirmarActionPerformed
 
     private void jjm_jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnCancelarActionPerformed
-<<<<<<< HEAD
 Util.habilitar(false, jjm_jTxtIdVenda, jjm_jFmtDatadavenda, jjm_jTxtValortotal,
                    jjm_jCboCliente, jjm_jCboVendedor);
 
     Util.habilitar(false, jjm_jBtnConfirmar, jjm_jBtnCancelar);
 
     Util.habilitar(true, jjm_jBtnIncluir, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar);
-=======
->>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
         
     }//GEN-LAST:event_jjm_jBtnCancelarActionPerformed
 
@@ -252,17 +240,12 @@ Util.habilitar(false, jjm_jTxtIdVenda, jjm_jFmtDatadavenda, jjm_jTxtValortotal,
             jjm_jFmtDatadavenda.setText(venda.getjjm_Datadavenda());
             jjm_jTxtValortotal.setText(venda.getjjm_Valortotal());
         }*/
-<<<<<<< HEAD
           Util.mensagem("Nao Implementado.");
                                               
-=======
-        
->>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
     }//GEN-LAST:event_jjm_jBtnPesquisarActionPerformed
 
     private void jjm_jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
        Util.habilitar(true, jjm_jTxtIdVenda, jjm_jFmtDatadavenda, jjm_jTxtValortotal,
                    jjm_jCboCliente, jjm_jCboVendedor);
 
@@ -279,21 +262,11 @@ Util.habilitar(true, jjm_jFmtDatadavenda, jjm_jTxtValortotal,
     Util.habilitar(true, jjm_jBtnConfirmar, jjm_jBtnCancelar);
 
     Util.habilitar(false, jjm_jBtnIncluir, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar);
-=======
-       
-    }//GEN-LAST:event_jjm_jBtnIncluirActionPerformed
-
-    private void jjm_jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnAlterarActionPerformed
->>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
         
     }//GEN-LAST:event_jjm_jBtnAlterarActionPerformed
 
     private void jjm_jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnExcluirActionPerformed
-<<<<<<< HEAD
   Util.perguntar("Deseja excluir o registro?");      
-=======
-      
->>>>>>> ecca9fa7b02041200b23e91c4dcc5efda9b102aa
     }//GEN-LAST:event_jjm_jBtnExcluirActionPerformed
 
     /**
