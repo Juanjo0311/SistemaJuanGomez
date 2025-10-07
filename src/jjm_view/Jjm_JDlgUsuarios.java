@@ -4,6 +4,7 @@
  */
 package jjm_view;
 
+import bean.JjmUsuarios;
 import tools.Util;
 
 /**
@@ -26,6 +27,42 @@ public class Jjm_JDlgUsuarios extends javax.swing.JDialog {
      jjm_jBtnConfirmar.setEnabled(false);
     jjm_jBtnCancelar.setEnabled(false);
     }
+    public JjmUsuarios viewBean() {
+    JjmUsuarios jjmUsuarios = new JjmUsuarios();
+
+    jjmUsuarios.setJjmIdusuarios(Util.strToInt(jjm_jTxtCodigo.getText()));
+    jjmUsuarios.setJjmNome(jjm_jTxtNome.getText());
+    jjmUsuarios.setJjmApelido(jjm_jTxtApelido.getText());
+    jjmUsuarios.setJjmCpf(jjm_jFmtCpf.getText());
+    jjmUsuarios.setJjmDataNasc(Util.strToDate(jjm_jFmtDataDenascimento.getText()));
+   // jjmUsuarios.setJjmSenha(jjm_jPwfSenha.getText());
+    jjmUsuarios.setJjmNivel(jjm_jCboNivel.getSelectedIndex());
+
+    if (jjm_jChbAtivo.isSelected()) {
+        jjmUsuarios.setJjmAtivo("S");
+    } else {
+        jjmUsuarios.setJjmAtivo("N");
+    }
+
+    return jjmUsuarios;
+}
+
+public void beanView(JjmUsuarios jjmUsuarios) {
+    jjm_jTxtCodigo.setText(Util.intToStr(jjmUsuarios.getJjmIdusuarios()));
+    jjm_jTxtNome.setText(jjmUsuarios.getJjmNome());
+    jjm_jTxtApelido.setText(jjmUsuarios.getJjmApelido());
+    jjm_jFmtCpf.setText(jjmUsuarios.getJjmCpf());
+    jjm_jFmtDataDenascimento.setText(Util.dateToStr(jjmUsuarios.getJjmDataNasc()));
+   // jjm_jP.setText(jjmUsuarios.getJjmSenha());
+    jjm_jCboNivel.setSelectedIndex(jjmUsuarios.getJjmNivel());
+
+    if ("S".equals(jjmUsuarios.getJjmAtivo())) {
+        jjm_jChbAtivo.setSelected(true);
+    } else {
+        jjm_jChbAtivo.setSelected(false);
+    }
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
