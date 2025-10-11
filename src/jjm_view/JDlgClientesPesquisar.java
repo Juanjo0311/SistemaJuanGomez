@@ -4,12 +4,13 @@
  */
 package jjm_view;
 
+import dao.ClientesDAO;
 import java.util.List;
-//import jjm_bean.Jjm_Clientes;
+import bean.JjmClientes;
 //import jjm_dao.Jjm_ClientesDAO;
 
 public class JDlgClientesPesquisar extends javax.swing.JDialog {
-       // Jjm_ControllerClientes controllerClientes;
+       Jjm_ControllerClientes controllerClientes;
        Jjm_JDlgClientes jDlgClientes;
     /**
      * Creates new form JDlgUsuariosPesquisar
@@ -20,11 +21,11 @@ public class JDlgClientesPesquisar extends javax.swing.JDialog {
         setTitle("Pesquisar clientes");
         setLocationRelativeTo(null);
         
-      //  controllerClientes = new Jjm_ControllerClientes();
-        //Jjm_ClientesDAO clienteDao = new Jjm_ClientesDAO();
-        //List lista = (List) clienteDao.listAll();
-        //controllerClientes.setList(lista);
-       // jTable1.setModel(controllerClientes);
+      controllerClientes = new Jjm_ControllerClientes();
+       ClientesDAO clienteDao = new ClientesDAO();
+        List lista = (List) clienteDao.listAll();
+        controllerClientes.setList(lista);
+       jTable1.setModel(controllerClientes);
         
     }
 
@@ -93,8 +94,8 @@ public class JDlgClientesPesquisar extends javax.swing.JDialog {
 
     private void JBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnOkActionPerformed
         int linSel = jTable1.getSelectedRow();
-        //Jjm_Clientes cliente = (Jjm_Clientes) controllerClientes.getBean(linSel);
-        //jDlgClientes.beanView(cliente);
+        JjmClientes cliente = (JjmClientes) controllerClientes.getBean(linSel);
+        jDlgClientes.beanView(cliente);
         setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_JBtnOkActionPerformed
 

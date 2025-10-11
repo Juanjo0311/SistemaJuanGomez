@@ -5,6 +5,7 @@
 package jjm_view;
 
 import bean.JjmClientes;
+import dao.UsuariosDAO;
 import tools.Util;
 
 /**
@@ -16,6 +17,8 @@ public class Jjm_JDlgClientes extends javax.swing.JDialog {
     /**
      * Creates new form Jjm_JDlgClientes
      */
+        private boolean incluir; 
+
      boolean pesquisando = false;
     public Jjm_JDlgClientes(java.awt.Frame parent, boolean modal) {
        super(parent, modal);
@@ -477,14 +480,14 @@ public void beanView(JjmClientes jjmClientes) {
         jjm_jTxtCep, jjm_jTxtTelefone, jjm_jTxtEndereco, jjm_jTxtEstado,
         jjm_jBtnConfirmar, jjm_jBtnCancelar);
     Util.habilitar(false, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar, jjm_jBtnIncluir);
+    incluir=false;
     }//GEN-LAST:event_jjm_jBtnAlterarActionPerformed
 
     private void jjm_jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnExcluirActionPerformed
 
-   if (pesquisando == false) {
-            Util.mensagem("Você precisa pesquisar um usuário primeiro");
-        } else {
-                Util.perguntar("Você deseja excluir?");
+  if (Util.perguntar("Deseja Excluir?") == true) {
+            UsuariosDAO usuariosDAO = new UsuariosDAO();
+            usuariosDAO.delete(viewBean());
                 Util.limpar(  jjm_jTxtCodigo, jjm_jTxtNome, jjm_jFmtDatadenascimento, jjm_jTxtCidade, 
         jjm_jTxtFormadepagamento, jjm_jFmtDatadaultimacompra, jjm_jTxtEmail, 
         jjm_jTxtRg, jjm_jTxtBairro, jjm_jTxtSexo, jjm_jTxtTipodecliente, 
@@ -494,7 +497,13 @@ public void beanView(JjmClientes jjmClientes) {
     }//GEN-LAST:event_jjm_jBtnExcluirActionPerformed
 
     private void jjm_jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnConfirmarActionPerformed
-Util.habilitar(false, 
+   UsuariosDAO usuariosDAO = new UsuariosDAO();
+        if (incluir == true) {
+            usuariosDAO.insert(viewBean());
+        } else {
+            usuariosDAO.update(viewBean());
+        }
+        Util.habilitar(false, 
         jjm_jTxtCodigo, jjm_jTxtNome, jjm_jFmtDatadenascimento, jjm_jTxtCidade, 
         jjm_jTxtFormadepagamento, jjm_jFmtDatadaultimacompra, jjm_jTxtEmail, 
         jjm_jTxtRg, jjm_jTxtBairro, jjm_jTxtSexo, jjm_jTxtTipodecliente, 
@@ -542,7 +551,8 @@ Util.habilitar(false,
             jjm_jFmtDatadenascimento.setText(null);
             jjm_jTxtBairro.setText(clientes.getjjm_Bairro());
         }*/
-      JDlgClientesPesquisar jDlgClientePesquisar = new JDlgClientesPesquisar(null, true);
+        
+        JDlgClientesPesquisar jDlgClientePesquisar = new JDlgClientesPesquisar(null, true);
         jDlgClientePesquisar.setTelaPai(this);
         jDlgClientePesquisar.setVisible(true);
         pesquisando = true;
@@ -558,8 +568,9 @@ Util.habilitar(false,
         jjm_jBtnConfirmar, jjm_jBtnCancelar
     );
     Util.habilitar(false, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar, jjm_jBtnIncluir);
+jjm_jTxtCodigo.grabFocus();
+        incluir = true;
 
-    
         
        
     }//GEN-LAST:event_jjm_jBtnIncluirActionPerformed

@@ -47,7 +47,7 @@ public class JjmVendedor  implements java.io.Serializable {
   
     }
    
-     @Id @GeneratedValue(strategy=IDENTITY)
+     @Id 
 
     
     @Column(name="jjm_id_vendedor", unique=true, nullable=false)

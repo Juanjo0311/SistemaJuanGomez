@@ -4,6 +4,8 @@
  */
 package jjm_view;
 
+import bean.JjmVendedor;
+import dao.VendedorDAO;
 import tools.Util;
 
 /**
@@ -16,6 +18,8 @@ public class Jjm_JDlgVendedor extends javax.swing.JDialog {
      * Creates new form Jjm_JDlgVendedor
      */
      boolean pesquisando = false;
+        private boolean incluir; 
+
 
     public Jjm_JDlgVendedor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -30,6 +34,28 @@ public class Jjm_JDlgVendedor extends javax.swing.JDialog {
     Util.habilitar(true, jjm_jBtnIncluir, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar);
 
     }
+    public JjmVendedor viewBean() {
+    JjmVendedor jjmVendedor = new JjmVendedor();
+    jjmVendedor.setJjmIdVendedor(Util.strToInt(jjm_jTxtVendedor.getText()));
+    jjmVendedor.setJjmNome(jjm_jTxtNome.getText());
+    jjmVendedor.setJjmEmail(jjm_jTxtEmail.getText());
+    jjmVendedor.setJjmTelefone(jjm_jTxtTelefone.getText());
+    jjmVendedor.setJjmDataCadrastro(Util.strToDate(jjm_jFmtDatadecadastro.getText()));
+    jjmVendedor.setJjmSalario(Util.strToDuble(jjm_jTxtSalario.getText()));
+    jjmVendedor.setJjmEndereco(jjm_jTxtEndereco.getText());
+    return jjmVendedor;
+}
+
+public void beanView(JjmVendedor jjmVendedor) {
+    jjm_jTxtVendedor.setText(Util.intToStr(jjmVendedor.getJjmIdVendedor()));
+    jjm_jTxtNome.setText(jjmVendedor.getJjmNome());
+    jjm_jTxtEmail.setText(jjmVendedor.getJjmEmail());
+    jjm_jTxtTelefone.setText(jjmVendedor.getJjmTelefone());
+    jjm_jFmtDatadecadastro.setText(Util.dateToStr(jjmVendedor.getJjmDataCadrastro()));
+    jjm_jTxtSalario.setText(Util.doubleToStr(jjmVendedor.getJjmSalario()));
+    jjm_jTxtEndereco.setText(jjmVendedor.getJjmEndereco());
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -266,6 +292,8 @@ public class Jjm_JDlgVendedor extends javax.swing.JDialog {
     jjm_jFmtDatadecadastro.setText("");
     jjm_jTxtSalario.setText("");
     jjm_jTxtEndereco.setText("");
+      jjm_jTxtVendedor.grabFocus();
+        incluir = true;
     }//GEN-LAST:event_jjm_jBtnIncluirActionPerformed
 
     private void jjm_jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnAlterarActionPerformed
@@ -274,22 +302,28 @@ public class Jjm_JDlgVendedor extends javax.swing.JDialog {
 
     Util.habilitar(true, jjm_jBtnConfirmar, jjm_jBtnCancelar);
     Util.habilitar(false, jjm_jBtnIncluir, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar);
-       
+        jjm_jTxtNome.grabFocus();
+        incluir = false;
     }//GEN-LAST:event_jjm_jBtnAlterarActionPerformed
 
     private void jjm_jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnExcluirActionPerformed
     
-   if (pesquisando == false) {
-            Util.mensagem("Você precisa pesquisar um usuário primeiro");
-        } else {
-                Util.perguntar("Você deseja excluir?");
+     if (Util.perguntar("Deseja Excluir?") == true) {
+            VendedorDAO vendedorDAO = new VendedorDAO();
+            vendedorDAO.delete(viewBean());
                 Util.limpar(jjm_jTxtNome, jjm_jTxtEmail,
             jjm_jTxtTelefone, jjm_jFmtDatadecadastro, jjm_jTxtSalario, jjm_jTxtEndereco);  
         }
     }//GEN-LAST:event_jjm_jBtnExcluirActionPerformed
 
     private void jjm_jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnConfirmarActionPerformed
-       Util.habilitar(false, jjm_jTxtVendedor, jjm_jTxtNome, jjm_jTxtEmail,
+       VendedorDAO vendedorDAO = new VendedorDAO();
+        if (incluir == true) {
+            vendedorDAO.insert(viewBean());
+        } else {
+            vendedorDAO.update(viewBean());
+        }
+        Util.habilitar(false, jjm_jTxtVendedor, jjm_jTxtNome, jjm_jTxtEmail,
             jjm_jTxtTelefone, jjm_jFmtDatadecadastro, jjm_jTxtSalario, jjm_jTxtEndereco,
             jjm_jBtnConfirmar, jjm_jBtnCancelar);
     

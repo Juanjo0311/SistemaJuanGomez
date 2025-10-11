@@ -5,6 +5,7 @@
 package jjm_view;
 
 import bean.JjmUsuarios;
+import dao.UsuariosDAO;
 import tools.Util;
 
 /**
@@ -17,7 +18,7 @@ public class Jjm_JDlgUsuarios extends javax.swing.JDialog {
      * Creates new form Jjm_JDlgUsuarios
      */
         boolean pesquisando = false;
-
+    private boolean incluir; 
     public Jjm_JDlgUsuarios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -35,7 +36,7 @@ public class Jjm_JDlgUsuarios extends javax.swing.JDialog {
     jjmUsuarios.setJjmApelido(jjm_jTxtApelido.getText());
     jjmUsuarios.setJjmCpf(jjm_jFmtCpf.getText());
     jjmUsuarios.setJjmDataNasc(Util.strToDate(jjm_jFmtDataDenascimento.getText()));
-   // jjmUsuarios.setJjmSenha(jjm_jPwfSenha.getText());
+    jjmUsuarios.setJjmSenha(jjm_PwdSenha.getText());
     jjmUsuarios.setJjmNivel(jjm_jCboNivel.getSelectedIndex());
 
     if (jjm_jChbAtivo.isSelected()) {
@@ -53,7 +54,7 @@ public void beanView(JjmUsuarios jjmUsuarios) {
     jjm_jTxtApelido.setText(jjmUsuarios.getJjmApelido());
     jjm_jFmtCpf.setText(jjmUsuarios.getJjmCpf());
     jjm_jFmtDataDenascimento.setText(Util.dateToStr(jjmUsuarios.getJjmDataNasc()));
-   // jjm_jP.setText(jjmUsuarios.getJjmSenha());
+    jjm_PwdSenha.setText(jjmUsuarios.getJjmSenha());
     jjm_jCboNivel.setSelectedIndex(jjmUsuarios.getJjmNivel());
 
     if ("S".equals(jjmUsuarios.getJjmAtivo())) {
@@ -325,30 +326,40 @@ public void beanView(JjmUsuarios jjmUsuarios) {
     private void jjm_jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnIncluirActionPerformed
         // TODO add your handling code here:
         Util.habilitar(true,jjm_jTxtApelido,jjm_jTxtCodigo,jjm_jTxtNome,jjm_PwdSenha,jjm_jChbAtivo,jjm_jFmtDataDenascimento,jjm_jFmtCpf,jjm_jCboNivel,jjm_jBtnConfirmar,jjm_jBtnCancelar );
-         Util.habilitar(false, jjm_jBtnAlterar,jjm_jBtnExcluir,jjm_jBtnPesquisar,jjm_jBtnIncluir);
+         Util.habilitar(false, jjm_jBtnAlterar,jjm_jBtnExcluir,jjm_jBtnIncluir);
 
 Util.limpar(jjm_jTxtCodigo,jjm_jTxtNome,jjm_jTxtApelido);
+jjm_jTxtCodigo.grabFocus();
+        incluir = true;
     }//GEN-LAST:event_jjm_jBtnIncluirActionPerformed
 
     private void jjm_jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnAlterarActionPerformed
         Util.habilitar(true,jjm_jTxtApelido,jjm_jTxtNome,jjm_PwdSenha,jjm_jChbAtivo,jjm_jFmtDataDenascimento,jjm_jFmtCpf,jjm_jCboNivel,jjm_jBtnConfirmar,jjm_jBtnCancelar );
          Util.habilitar(false, jjm_jBtnAlterar,jjm_jBtnExcluir,jjm_jBtnPesquisar,jjm_jBtnIncluir);
+        incluir = false;
+        jjm_jTxtNome.grabFocus();
 
     }//GEN-LAST:event_jjm_jBtnAlterarActionPerformed
 
     private void jjm_jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnExcluirActionPerformed
- if (pesquisando == false) {
-            Util.mensagem("Você precisa pesquisar um usuário primeiro");
-        } else {
-                Util.perguntar("Você deseja excluir?");
-                Util.limpar(jjm_jTxtApelido,jjm_jTxtCodigo,jjm_jTxtNome,jjm_PwdSenha,jjm_jChbAtivo,jjm_jFmtDataDenascimento,jjm_jFmtCpf,jjm_jCboNivel);  
+   if (Util.perguntar("Deseja Excluir?") == true) {
+            UsuariosDAO usuariosDAO = new UsuariosDAO();
+            usuariosDAO.delete(viewBean());
         }
+        Util.limpar(jjm_jTxtApelido,jjm_jTxtNome,jjm_PwdSenha,jjm_jChbAtivo,jjm_jFmtDataDenascimento,jjm_jFmtCpf,jjm_jCboNivel,jjm_jBtnConfirmar,jjm_jBtnCancelar
+);
        
     }//GEN-LAST:event_jjm_jBtnExcluirActionPerformed
 
     private void jjm_jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnConfirmarActionPerformed
-        Util.habilitar(false,jjm_jTxtApelido,jjm_jTxtCodigo,jjm_jTxtNome,jjm_PwdSenha,jjm_jChbAtivo,jjm_jFmtDataDenascimento,jjm_jFmtCpf,jjm_jCboNivel,jjm_jBtnConfirmar,jjm_jBtnCancelar );
-         Util.habilitar(true, jjm_jBtnAlterar,jjm_jBtnExcluir,jjm_jBtnPesquisar,jjm_jBtnIncluir);
+     UsuariosDAO usuariosDAO = new UsuariosDAO();
+        if (incluir == true) {
+            usuariosDAO.insert(viewBean());
+        } else {
+            usuariosDAO.update(viewBean());
+        }
+         Util.habilitar(true,jjm_jTxtApelido,jjm_jTxtCodigo,jjm_jTxtNome,jjm_PwdSenha,jjm_jChbAtivo,jjm_jFmtDataDenascimento,jjm_jFmtCpf,jjm_jCboNivel,jjm_jBtnConfirmar,jjm_jBtnCancelar );
+         Util.habilitar(false, jjm_jBtnAlterar,jjm_jBtnExcluir,jjm_jBtnIncluir);
     }//GEN-LAST:event_jjm_jBtnConfirmarActionPerformed
 
     private void jjm_jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnCancelarActionPerformed

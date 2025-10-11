@@ -2,7 +2,6 @@ package bean;
 // Generated 06/10/2025 20:15:00 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,37 +26,36 @@ import javax.persistence.TemporalType;
 public class JjmProdutos  implements java.io.Serializable {
 
 
-     private Integer jjmIdProduto;
+     private int jjmIdProduto;
      private String jjmNome;
      private String jjmDescricao;
-     private BigDecimal jjmPreco;
+     private double jjmPreco;
      private Date jjmDataCadastro;
      private String jjmMarca;
      private String jjmCategoria;
-     private Set jjmVendaProdutoses = new HashSet(0);
 
     public JjmProdutos() {
     }
 
-    public JjmProdutos(String jjmNome, String jjmDescricao, BigDecimal jjmPreco, Date jjmDataCadastro, String jjmMarca, String jjmCategoria, Set jjmVendaProdutoses) {
+    public JjmProdutos(String jjmNome, String jjmDescricao, double jjmPreco, Date jjmDataCadastro, String jjmMarca, String jjmCategoria, Set jjmVendaProdutoses) {
        this.jjmNome = jjmNome;
        this.jjmDescricao = jjmDescricao;
        this.jjmPreco = jjmPreco;
        this.jjmDataCadastro = jjmDataCadastro;
        this.jjmMarca = jjmMarca;
        this.jjmCategoria = jjmCategoria;
-       this.jjmVendaProdutoses = jjmVendaProdutoses;
+  
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="jjm_id_produto", unique=true, nullable=false)
-    public Integer getJjmIdProduto() {
+    public int getJjmIdProduto() {
         return this.jjmIdProduto;
     }
     
-    public void setJjmIdProduto(Integer jjmIdProduto) {
+    public void setJjmIdProduto(int jjmIdProduto) {
         this.jjmIdProduto = jjmIdProduto;
     }
 
@@ -83,11 +81,11 @@ public class JjmProdutos  implements java.io.Serializable {
 
     
     @Column(name="jjm_preco", precision=9)
-    public BigDecimal getJjmPreco() {
+    public double getJjmPreco() {
         return this.jjmPreco;
     }
     
-    public void setJjmPreco(BigDecimal jjmPreco) {
+    public void setJjmPreco(double jjmPreco) {
         this.jjmPreco = jjmPreco;
     }
 
@@ -103,7 +101,7 @@ public class JjmProdutos  implements java.io.Serializable {
 
     
     @Column(name="jjm_marca", length=100)
-    public String getJjmMarca() {
+public String getJjmMarca() {
         return this.jjmMarca;
     }
     
@@ -121,14 +119,7 @@ public class JjmProdutos  implements java.io.Serializable {
         this.jjmCategoria = jjmCategoria;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="jjmProdutos")
-    public Set getJjmVendaProdutoses() {
-        return this.jjmVendaProdutoses;
-    }
-    
-    public void setJjmVendaProdutoses(Set jjmVendaProdutoses) {
-        this.jjmVendaProdutoses = jjmVendaProdutoses;
-    }
+
 
 
 

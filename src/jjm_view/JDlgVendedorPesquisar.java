@@ -5,11 +5,11 @@
 package jjm_view;
 
 import java.util.List;
-//import jjm_bean.Jjm_Vendedor;
-//import jjm_dao.Jjm_VendedorDAO;
+import bean.JjmVendedor;
+import dao.VendedorDAO;
 
 public class JDlgVendedorPesquisar extends javax.swing.JDialog {
-       // Jjm_ControllerVendedor controllerVendedor;
+       Jjm_ControllerVendedor controllerVendedor;
         Jjm_JDlgVendedor jDlgVendedor;
     /**
      * Creates new form JDlgUsuariosPesquisar
@@ -20,11 +20,11 @@ public class JDlgVendedorPesquisar extends javax.swing.JDialog {
         setTitle("Pesquisar vendedores");
         setLocationRelativeTo(null);
         
-//        controllerVendedor = new Jjm_ControllerVendedor();
-//        Jjm_VendedorDAO vendedorDao = new Jjm_VendedorDAO();
-//        List lista = (List) vendedorDao.listAll();
-//        controllerVendedor.setList(lista);
-//        jTable1.setModel(controllerVendedor);
+     controllerVendedor = new Jjm_ControllerVendedor();
+        VendedorDAO vendedorDao = new VendedorDAO();
+       List lista = (List) vendedorDao.listAll();
+       controllerVendedor.setList(lista);
+       jTable1.setModel(controllerVendedor);
         
     }
 
@@ -93,8 +93,8 @@ public class JDlgVendedorPesquisar extends javax.swing.JDialog {
 
     private void JBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnOkActionPerformed
         int linSel = jTable1.getSelectedRow();
-       // Jjm_Vendedor usuarios = (Jjm_Vendedor) controllerVendedor.getBean(linSel);
-        //jDlgVendedor.beanView(usuarios);
+        JjmVendedor usuarios = (JjmVendedor) controllerVendedor.getBean(linSel);
+        jDlgVendedor.beanView(usuarios);
         setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_JBtnOkActionPerformed
 

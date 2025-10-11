@@ -5,11 +5,11 @@
 package jjm_view;
 
 import java.util.List;
-//import jjm_bean.Jjm_Produto;
-//import jjm_dao.Jjm_ProdutoDAO;
+import bean.JjmProdutos;
+import dao.ProdutosDAO;
 
 public class JDlgProdutoPesquisar extends javax.swing.JDialog {
-       // Jjm_ControllerProduto controllerProduto;
+        Jjm_ControllerProduto controllerProduto;
         Jjm_JDlgProdutos jDlgProdutos;
     /**
      * Creates new form JDlgUsuariosPesquisar
@@ -20,11 +20,11 @@ public class JDlgProdutoPesquisar extends javax.swing.JDialog {
         setTitle("Pesquisar produtos");
         setLocationRelativeTo(null);
         
-      //  controllerProduto = new Jjm_ControllerProduto();
-        //Jjm_ProdutoDAO produtoDao = new Jjm_ProdutoDAO();
-        //List lista = (List) produtoDao.listAll();
-       // controllerProduto.setList(lista);
-        //jTable1.setModel(controllerProduto);
+      controllerProduto = new Jjm_ControllerProduto();
+       ProdutosDAO produtoDao = new ProdutosDAO();
+       List lista = (List) produtoDao.listAll();
+       controllerProduto.setList(lista);
+       jTable1.setModel(controllerProduto);
         
     }
 
@@ -93,8 +93,8 @@ public class JDlgProdutoPesquisar extends javax.swing.JDialog {
 
     private void JBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnOkActionPerformed
         int linSel = jTable1.getSelectedRow();
-       // Jjm_Produto produto = (Jjm_Produto) controllerProduto.getBean(linSel);
-        //jDlgProdutos.beanView(produto);
+       JjmProdutos produto = (JjmProdutos) controllerProduto.getBean(linSel);
+       jDlgProdutos.beanView(produto);
         setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_JBtnOkActionPerformed
 

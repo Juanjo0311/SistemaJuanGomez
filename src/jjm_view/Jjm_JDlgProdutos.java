@@ -5,6 +5,8 @@
 package jjm_view;
 
 import bean.JjmProdutos;
+import dao.ProdutosDAO;
+import dao.UsuariosDAO;
 import tools.Util;
 
 /**
@@ -15,7 +17,7 @@ public class Jjm_JDlgProdutos extends javax.swing.JDialog {
 
     /**
      * Creates new form Jjm_JDlgProdutos
-     */
+     */ private boolean incluir; 
         boolean pesquisando = false;
 
     public Jjm_JDlgProdutos(java.awt.Frame parent, boolean modal) {
@@ -278,7 +280,8 @@ public void beanView(JjmProdutos jjmProdutos) {
 
         Util.limpar(jjm_jTxtProduto, jjm_jTxtNome, jjm_jTxtDescricao,
                 jjm_jTxtPreco, jjm_jFmtDatadecadastro, jjm_jTxtMarca, jjm_jTxtCategoria);
-    
+        incluir=true;
+        jjm_jTxtProduto.grabFocus();
     }//GEN-LAST:event_jjm_jBtnIncluirActionPerformed
 
     private void jjm_jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnExcluirActionPerformed
@@ -293,7 +296,13 @@ public void beanView(JjmProdutos jjmProdutos) {
     }//GEN-LAST:event_jjm_jBtnExcluirActionPerformed
 
     private void jjm_jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnConfirmarActionPerformed
-   Util.habilitar(false, jjm_jTxtProduto, jjm_jTxtNome, jjm_jTxtDescricao,
+ ProdutosDAO produtosDAO = new ProdutosDAO();
+        if (incluir == true) {
+            produtosDAO.insert(viewBean());
+        } else {
+            produtosDAO.update(viewBean());
+        }
+        Util.habilitar(false, jjm_jTxtProduto, jjm_jTxtNome, jjm_jTxtDescricao,
                 jjm_jTxtPreco, jjm_jFmtDatadecadastro, jjm_jTxtMarca, jjm_jTxtCategoria);
 
         Util.habilitar(true, jjm_jBtnIncluir, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar);
@@ -333,7 +342,8 @@ public void beanView(JjmProdutos jjmProdutos) {
 
         Util.habilitar(false, jjm_jBtnIncluir, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar);
         Util.habilitar(true, jjm_jBtnConfirmar, jjm_jBtnCancelar);
-            
+            incluir=false;
+            jjm_jTxtNome.grabFocus();
     }//GEN-LAST:event_jjm_jBtnAlterarActionPerformed
 
     private void jjm_jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnCancelarActionPerformed

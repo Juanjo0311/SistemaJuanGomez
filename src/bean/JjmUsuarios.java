@@ -22,19 +22,19 @@ import javax.persistence.TemporalType;
 public class JjmUsuarios  implements java.io.Serializable {
 
 
-     private Integer jjmIdusuarios;
+     private int jjmIdusuarios;
      private String jjmNome;
      private String jjmApelido;
      private String jjmCpf;
      private Date jjmDataNasc;
      private String jjmSenha;
      private String jjmAtivo;
-     private Integer jjmNivel;
+     private int jjmNivel;
 
     public JjmUsuarios() {
     }
 
-    public JjmUsuarios(String jjmNome, String jjmApelido, String jjmCpf, Date jjmDataNasc, String jjmSenha, String jjmAtivo, Integer jjmNivel) {
+    public JjmUsuarios(String jjmNome, String jjmApelido, String jjmCpf, Date jjmDataNasc, String jjmSenha, String jjmAtivo, int jjmNivel) {
        this.jjmNome = jjmNome;
        this.jjmApelido = jjmApelido;
        this.jjmCpf = jjmCpf;
@@ -44,15 +44,13 @@ public class JjmUsuarios  implements java.io.Serializable {
        this.jjmNivel = jjmNivel;
     }
    
-     @Id @GeneratedValue(strategy=IDENTITY)
-
+    @Id
+@Column(name="jjm_idusuarios", unique=true, nullable=false)
+public int getJjmIdusuarios() {
+    return this.jjmIdusuarios;
+}
     
-    @Column(name="jjm_idusuarios", unique=true, nullable=false)
-    public Integer getJjmIdusuarios() {
-        return this.jjmIdusuarios;
-    }
-    
-    public void setJjmIdusuarios(Integer jjmIdusuarios) {
+    public void setJjmIdusuarios(int jjmIdusuarios) {
         this.jjmIdusuarios = jjmIdusuarios;
     }
 
@@ -118,11 +116,11 @@ public class JjmUsuarios  implements java.io.Serializable {
 
     
     @Column(name="jjm_nivel")
-    public Integer getJjmNivel() {
+    public int getJjmNivel() {
         return this.jjmNivel;
     }
     
-    public void setJjmNivel(Integer jjmNivel) {
+    public void setJjmNivel(int jjmNivel) {
         this.jjmNivel = jjmNivel;
     }
 
