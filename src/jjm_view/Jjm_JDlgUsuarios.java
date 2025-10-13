@@ -6,11 +6,14 @@ package jjm_view;
 
 import bean.JjmUsuarios;
 import dao.UsuariosDAO;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Timer;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import tools.Util;
@@ -42,6 +45,16 @@ public class Jjm_JDlgUsuarios extends javax.swing.JDialog {
         } catch (ParseException ex) {
             Logger.getLogger(Jjm_JDlgUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
+    Timer timer = new Timer(1000, new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Date agora = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
+        jLabel2.setText(formato.format(agora));
+    }
+});
+timer.start();
+
             
     }
     public JjmUsuarios viewBean() {
@@ -66,6 +79,7 @@ public class Jjm_JDlgUsuarios extends javax.swing.JDialog {
     } else {
         jjmUsuarios.setJjmAtivo("N");
     }
+    
 
     return jjmUsuarios;
 }
@@ -120,6 +134,7 @@ public void beanView(JjmUsuarios jjmUsuarios) {
         jjm_jBtnConfirmar = new javax.swing.JButton();
         jjm_jBtnCancelar = new javax.swing.JButton();
         jjm_jBtnPesquisar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         jjm_jLblNivel.setText("Nível");
 
@@ -276,7 +291,8 @@ public void beanView(JjmUsuarios jjmUsuarios) {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jjm_jBtnCancelar)
-                                    .addComponent(jjm_jBtnAlterar))))
+                                    .addComponent(jjm_jBtnAlterar)))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -311,7 +327,9 @@ public void beanView(JjmUsuarios jjmUsuarios) {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jjm_jCboNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jjm_jChbAtivo))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jjm_jBtnIncluir)
                     .addComponent(jjm_jBtnConfirmar)
@@ -321,7 +339,7 @@ public void beanView(JjmUsuarios jjmUsuarios) {
                     .addComponent(jjm_jBtnExcluir)
                     .addComponent(jjm_jBtnPesquisar)
                     .addComponent(jjm_jBtnCancelar))
-                .addGap(0, 22, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
@@ -465,6 +483,7 @@ jjm_jTxtCodigo.grabFocus();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField jjm_PwdSenha;
     private javax.swing.JButton jjm_jBtnAlterar;
     private javax.swing.JButton jjm_jBtnCancelar;

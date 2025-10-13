@@ -7,11 +7,14 @@ package jjm_view;
 import bean.JjmProdutos;
 import dao.ProdutosDAO;
 import dao.UsuariosDAO;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Timer;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import tools.Util;
@@ -48,6 +51,16 @@ public class Jjm_JDlgProdutos extends javax.swing.JDialog {
         } catch (ParseException ex) {
             Logger.getLogger(Jjm_JDlgProdutos.class.getName()).log(Level.SEVERE, null, ex);
         }
+          Timer timer = new Timer(1000, new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Date agora = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
+        jLabel1.setText(formato.format(agora));
+    }
+});
+timer.start();
+
     }
 public JjmProdutos viewBean() {
     JjmProdutos jjmProdutos = new JjmProdutos();
@@ -111,6 +124,7 @@ public void beanView(JjmProdutos jjmProdutos) {
         jjm_jBtnPesquisar = new javax.swing.JButton();
         jjm_jBtnAlterar = new javax.swing.JButton();
         jjm_jBtnCancelar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         jjm_jLblPreco.setText("Preco");
 
@@ -233,11 +247,16 @@ public void beanView(JjmProdutos jjmProdutos) {
                         .addComponent(jjm_jBtnAlterar)))
                 .addGap(0, 48, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jjm_jBtnExcluir)
-                .addGap(18, 18, 18)
-                .addComponent(jjm_jBtnPesquisar)
-                .addGap(18, 18, 18)
-                .addComponent(jjm_jBtnCancelar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jjm_jBtnExcluir)
+                        .addGap(18, 18, 18)
+                        .addComponent(jjm_jBtnPesquisar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jjm_jBtnCancelar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -269,7 +288,9 @@ public void beanView(JjmProdutos jjmProdutos) {
                 .addComponent(jjm_jLblCategoria)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jjm_jTxtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jjm_jBtnIncluir)
                     .addComponent(jjm_jBtnConfirmar)
@@ -279,7 +300,7 @@ public void beanView(JjmProdutos jjmProdutos) {
                     .addComponent(jjm_jBtnExcluir)
                     .addComponent(jjm_jBtnPesquisar)
                     .addComponent(jjm_jBtnCancelar))
-                .addGap(0, 5, Short.MAX_VALUE))
+                .addGap(0, 19, Short.MAX_VALUE))
         );
 
         pack();
@@ -425,6 +446,7 @@ public void beanView(JjmProdutos jjmProdutos) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jjm_jBtnAlterar;
     private javax.swing.JButton jjm_jBtnCancelar;
     private javax.swing.JButton jjm_jBtnConfirmar;

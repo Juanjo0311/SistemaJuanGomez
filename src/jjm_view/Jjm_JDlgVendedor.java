@@ -6,11 +6,14 @@ package jjm_view;
 
 import bean.JjmVendedor;
 import dao.VendedorDAO;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Timer;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import tools.Util;
@@ -48,6 +51,15 @@ public class Jjm_JDlgVendedor extends javax.swing.JDialog {
         } catch (ParseException ex) {
             Logger.getLogger(Jjm_JDlgVendedor.class.getName()).log(Level.SEVERE, null, ex);
         }
+         Timer timer = new Timer(1000, new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Date agora = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
+        jLabel1.setText(formato.format(agora));
+    }
+});
+timer.start();
             
     }
     public JjmVendedor viewBean() {
@@ -110,6 +122,7 @@ public void beanView(JjmVendedor jjmVendedor) {
         jjm_jBtnAlterar = new javax.swing.JButton();
         jjm_jBtnExcluir = new javax.swing.JButton();
         jjm_jBtnConfirmar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -207,7 +220,10 @@ public void beanView(JjmVendedor jjmVendedor) {
                             .addComponent(jjm_jTxtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jjm_jTxtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jjm_jLblEndereco)
-                    .addComponent(jjm_jTxtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jjm_jTxtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jjm_jBtnExcluir)
                         .addGap(18, 18, 18)
@@ -249,7 +265,9 @@ public void beanView(JjmVendedor jjmVendedor) {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jjm_jLblEndereco)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jjm_jTxtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jjm_jTxtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jjm_jBtnIncluir)
@@ -403,6 +421,7 @@ Util.limpar(jjm_jTxtNome, jjm_jTxtEmail,
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jjm_jBtnAlterar;
     private javax.swing.JButton jjm_jBtnCancelar;
     private javax.swing.JButton jjm_jBtnConfirmar;
