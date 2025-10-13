@@ -7,6 +7,13 @@ package jjm_view;
 import bean.JjmProdutos;
 import dao.ProdutosDAO;
 import dao.UsuariosDAO;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 import tools.Util;
 
 /**
@@ -19,6 +26,8 @@ public class Jjm_JDlgProdutos extends javax.swing.JDialog {
      * Creates new form Jjm_JDlgProdutos
      */ private boolean incluir; 
         boolean pesquisando = false;
+            private MaskFormatter mascaraCpf, mascaraDataNasc;
+
 
     public Jjm_JDlgProdutos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -33,6 +42,12 @@ public class Jjm_JDlgProdutos extends javax.swing.JDialog {
         Util.habilitar(false, jjm_jTxtProduto, jjm_jTxtNome, jjm_jTxtDescricao,
                 jjm_jTxtPreco, jjm_jFmtDatadecadastro, jjm_jTxtMarca, jjm_jTxtCategoria);
     
+          try {
+            mascaraDataNasc = new MaskFormatter("##/##/####");
+            jjm_jFmtDatadecadastro.setFormatterFactory(new DefaultFormatterFactory(mascaraDataNasc));
+        } catch (ParseException ex) {
+            Logger.getLogger(Jjm_JDlgProdutos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 public JjmProdutos viewBean() {
     JjmProdutos jjmProdutos = new JjmProdutos();
@@ -41,7 +56,13 @@ public JjmProdutos viewBean() {
     jjmProdutos.setJjmNome(jjm_jTxtNome.getText());
     jjmProdutos.setJjmDescricao(jjm_jTxtDescricao.getText());
     jjmProdutos.setJjmPreco(Util.strToDuble(jjm_jTxtPreco.getText()));
-    jjmProdutos.setJjmDataCadastro(Util.strToDate(jjm_jFmtDatadecadastro.getText()));
+    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+ try {
+                    Date dataNasc = formato.parse(jjm_jFmtDatadecadastro.getText());
+                    jjmProdutos.setJjmDataCadastro(dataNasc);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Jjm_JDlgProdutos.class.getName()).log(Level.SEVERE, null, ex);
+                }
     jjmProdutos.setJjmMarca(jjm_jTxtMarca.getText());
     jjmProdutos.setJjmCategoria(jjm_jTxtCategoria.getText());
 
@@ -53,7 +74,9 @@ public void beanView(JjmProdutos jjmProdutos) {
     jjm_jTxtNome.setText(jjmProdutos.getJjmNome());
     jjm_jTxtDescricao.setText(jjmProdutos.getJjmDescricao());
     jjm_jTxtPreco.setText(Util.doubleToStr(jjmProdutos.getJjmPreco()));
-    jjm_jFmtDatadecadastro.setText(Util.dateToStr(jjmProdutos.getJjmDataCadastro()));
+    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                String dataNasc = formato.format(jjmProdutos.getJjmDataCadastro());
+                jjm_jFmtDatadecadastro.setText(dataNasc);
     jjm_jTxtMarca.setText(jjmProdutos.getJjmMarca());
     jjm_jTxtCategoria.setText(jjmProdutos.getJjmCategoria());
 }

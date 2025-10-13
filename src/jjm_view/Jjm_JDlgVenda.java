@@ -10,8 +10,16 @@ import bean.JjmClientes;
 import bean.JjmVenda;
 import bean.JjmVendedor;
 import dao.VendaDAO;
+import dao.VendedorDAO;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import tools.Util;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -24,33 +32,63 @@ public class Jjm_JDlgVenda extends javax.swing.JDialog {
      */
      boolean pesquisando = false;
     private boolean incluir; 
+    private MaskFormatter mascaraCpf, mascaraDataNasc;
+
     public Jjm_JDlgVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+
         Util.habilitar(false, jTxtCodigo, jFmtData, jCboClientes, jCboVendedor, jTxtTotal,
                 jBtnConfirmar, jBtnCancelar, jBtnIncluirProd, jBtnAlterarProd, jBtnExcluirProd);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
 
-        ClientesDAO clientesDAO = new ClientesDAO();
-        List lista = (List) clientesDAO.listAll();
-        for (int i = 0; i < lista.size(); i++) {
-            jCboClientes.addItem((JjmClientes) lista.get(i));
+    ClientesDAO clientesDAO = new ClientesDAO();
+            List<JjmClientes> listaClientes =  (List<JjmClientes>) clientesDAO.listAll();
+            for (JjmClientes cliente : listaClientes) {
+                jCboClientes.addItem(cliente);
+            }
+
+        VendedorDAO vendedorDAO = new VendedorDAO();
+       List<JjmVendedor> listaVendedores = (List<JjmVendedor>) vendedorDAO.listAll();
+                for (JjmVendedor vendedor : listaVendedores) {
+                jCboVendedor.addItem(vendedor);
+            }
+                try {
+            mascaraDataNasc = new MaskFormatter("##/##/####");
+            jFmtData.setFormatterFactory(new DefaultFormatterFactory(mascaraDataNasc));
+        } catch (ParseException ex) {
+            Logger.getLogger(Jjm_JDlgVenda.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+            }
+    
 
     public JjmVenda viewBean() {
         JjmVenda jjmvendas = new JjmVenda();
        jjmvendas.setJjmIdVenda(Util.strToInt(jTxtCodigo.getText()));
        jjmvendas.setJjmClientes((JjmClientes) jCboClientes.getSelectedItem() );
        jjmvendas.setJjmVendedor((JjmVendedor) jCboVendedor.getSelectedItem());
-        //data
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    Date dataNasc = formato.parse(jFmtData.getText());
+                    jjmvendas.setJjmDataVenda(dataNasc);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Jjm_JDlgVenda.class.getName()).log(Level.SEVERE, null, ex);
+                }
         jjmvendas.setJjmValorTotal(Util.strToDuble(jTxtTotal.getText()));
         return jjmvendas;
     }
     
     public void beanView(JjmVenda jjmVenda) {
         jCboClientes.setSelectedItem(jjmVenda.getJjmIdVenda());
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                String dataNasc = formato.format(jjmVenda.getJjmDataVenda());
+                jFmtData.setText(dataNasc);
+                
+                
+    jCboVendedor.setSelectedItem(jjmVenda.getJjmVendedor());
+    jTxtTotal.setText(Util.doubleToStr(jjmVenda.getJjmValorTotal()));
+
     }
 
     /**
@@ -88,19 +126,13 @@ public class Jjm_JDlgVenda extends javax.swing.JDialog {
 
         jLabel1.setText("Codigo");
 
-        jTxtCodigo.setText("jTextField1");
-
         jLabel2.setText("Data");
-
-        jFmtData.setText("jFormattedTextField1");
 
         jLabel3.setText("Clientes");
 
         jLabel4.setText("Vendedor");
 
         jLabel5.setText("Total");
-
-        jTxtTotal.setText("jTextField1");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -202,16 +234,16 @@ public class Jjm_JDlgVenda extends javax.swing.JDialog {
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel1)
-                                .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(24, 24, 24)
+                                .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addGap(97, 97, 97)
                                     .addComponent(jLabel3))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jFmtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jFmtData, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jCboClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
@@ -223,7 +255,7 @@ public class Jjm_JDlgVenda extends javax.swing.JDialog {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel5)
-                                .addComponent(jTxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jBtnIncluir)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

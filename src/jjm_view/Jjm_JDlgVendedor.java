@@ -6,6 +6,13 @@ package jjm_view;
 
 import bean.JjmVendedor;
 import dao.VendedorDAO;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 import tools.Util;
 
 /**
@@ -19,6 +26,8 @@ public class Jjm_JDlgVendedor extends javax.swing.JDialog {
      */
      boolean pesquisando = false;
         private boolean incluir; 
+                private MaskFormatter mascaraCpf, mascaraDataNasc;
+
 
 
     public Jjm_JDlgVendedor(java.awt.Frame parent, boolean modal) {
@@ -33,6 +42,13 @@ public class Jjm_JDlgVendedor extends javax.swing.JDialog {
  
     Util.habilitar(true, jjm_jBtnIncluir, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar);
 
+      try {
+            mascaraDataNasc = new MaskFormatter("##/##/####");
+           jjm_jFmtDatadecadastro.setFormatterFactory(new DefaultFormatterFactory(mascaraDataNasc));
+        } catch (ParseException ex) {
+            Logger.getLogger(Jjm_JDlgVendedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
     }
     public JjmVendedor viewBean() {
     JjmVendedor jjmVendedor = new JjmVendedor();
@@ -40,7 +56,13 @@ public class Jjm_JDlgVendedor extends javax.swing.JDialog {
     jjmVendedor.setJjmNome(jjm_jTxtNome.getText());
     jjmVendedor.setJjmEmail(jjm_jTxtEmail.getText());
     jjmVendedor.setJjmTelefone(jjm_jTxtTelefone.getText());
-    jjmVendedor.setJjmDataCadrastro(Util.strToDate(jjm_jFmtDatadecadastro.getText()));
+      SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    Date dataNasc = formato.parse(jjm_jFmtDatadecadastro.getText());
+                    jjmVendedor.setJjmDataCadrastro(dataNasc);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Jjm_JDlgVendedor.class.getName()).log(Level.SEVERE, null, ex);
+                }
     jjmVendedor.setJjmSalario(Util.strToDuble(jjm_jTxtSalario.getText()));
     jjmVendedor.setJjmEndereco(jjm_jTxtEndereco.getText());
     return jjmVendedor;
@@ -51,7 +73,9 @@ public void beanView(JjmVendedor jjmVendedor) {
     jjm_jTxtNome.setText(jjmVendedor.getJjmNome());
     jjm_jTxtEmail.setText(jjmVendedor.getJjmEmail());
     jjm_jTxtTelefone.setText(jjmVendedor.getJjmTelefone());
-    jjm_jFmtDatadecadastro.setText(Util.dateToStr(jjmVendedor.getJjmDataCadrastro()));
+     SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                String dataNasc = formato.format(jjmVendedor.getJjmDataCadrastro());
+                jjm_jFmtDatadecadastro.setText(dataNasc);
     jjm_jTxtSalario.setText(Util.doubleToStr(jjmVendedor.getJjmSalario()));
     jjm_jTxtEndereco.setText(jjmVendedor.getJjmEndereco());
 }
@@ -248,6 +272,8 @@ public void beanView(JjmVendedor jjmVendedor) {
             jjm_jBtnConfirmar, jjm_jBtnCancelar);
     
     Util.habilitar(true, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar, jjm_jBtnIncluir);
+    Util.limpar(jjm_jTxtNome, jjm_jTxtEmail,
+            jjm_jTxtTelefone, jjm_jFmtDatadecadastro, jjm_jTxtSalario, jjm_jTxtEndereco);
     }//GEN-LAST:event_jjm_jBtnCancelarActionPerformed
 
     private void jjm_jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnPesquisarActionPerformed
@@ -284,7 +310,8 @@ public void beanView(JjmVendedor jjmVendedor) {
 
     Util.habilitar(true, jjm_jBtnConfirmar, jjm_jBtnCancelar);
     Util.habilitar(false, jjm_jBtnIncluir, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar);
-
+Util.limpar(jjm_jTxtNome, jjm_jTxtEmail,
+            jjm_jTxtTelefone, jjm_jFmtDatadecadastro, jjm_jTxtSalario, jjm_jTxtEndereco);
     jjm_jTxtVendedor.setText("");
     jjm_jTxtNome.setText("");
     jjm_jTxtEmail.setText("");
@@ -328,6 +355,8 @@ public void beanView(JjmVendedor jjmVendedor) {
             jjm_jBtnConfirmar, jjm_jBtnCancelar);
     
     Util.habilitar(true, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar, jjm_jBtnIncluir);
+    Util.limpar(jjm_jTxtNome, jjm_jTxtEmail,
+            jjm_jTxtTelefone, jjm_jFmtDatadecadastro, jjm_jTxtSalario, jjm_jTxtEndereco);
 
     }//GEN-LAST:event_jjm_jBtnConfirmarActionPerformed
 

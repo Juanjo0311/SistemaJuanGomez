@@ -6,6 +6,13 @@ package jjm_view;
 
 import bean.JjmUsuarios;
 import dao.UsuariosDAO;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 import tools.Util;
 
 /**
@@ -18,6 +25,8 @@ public class Jjm_JDlgUsuarios extends javax.swing.JDialog {
      * Creates new form Jjm_JDlgUsuarios
      */
         boolean pesquisando = false;
+        private MaskFormatter mascaraCpf, mascaraDataNasc;
+
     private boolean incluir; 
     public Jjm_JDlgUsuarios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -27,6 +36,13 @@ public class Jjm_JDlgUsuarios extends javax.swing.JDialog {
         Util.habilitar(false, jjm_jTxtApelido,jjm_jTxtCodigo,jjm_jTxtNome,jjm_PwdSenha,jjm_jChbAtivo,jjm_jFmtDataDenascimento,jjm_jFmtCpf,jjm_jCboNivel);
      jjm_jBtnConfirmar.setEnabled(false);
     jjm_jBtnCancelar.setEnabled(false);
+    try {
+            mascaraDataNasc = new MaskFormatter("##/##/####");
+           jjm_jFmtDataDenascimento.setFormatterFactory(new DefaultFormatterFactory(mascaraDataNasc));
+        } catch (ParseException ex) {
+            Logger.getLogger(Jjm_JDlgUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
     }
     public JjmUsuarios viewBean() {
     JjmUsuarios jjmUsuarios = new JjmUsuarios();
@@ -35,7 +51,13 @@ public class Jjm_JDlgUsuarios extends javax.swing.JDialog {
     jjmUsuarios.setJjmNome(jjm_jTxtNome.getText());
     jjmUsuarios.setJjmApelido(jjm_jTxtApelido.getText());
     jjmUsuarios.setJjmCpf(jjm_jFmtCpf.getText());
-    jjmUsuarios.setJjmDataNasc(Util.strToDate(jjm_jFmtDataDenascimento.getText()));
+    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    Date dataNasc = formato.parse(jjm_jFmtDataDenascimento.getText());
+                    jjmUsuarios.setJjmDataNasc(dataNasc);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Jjm_JDlgUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+                }
     jjmUsuarios.setJjmSenha(jjm_PwdSenha.getText());
     jjmUsuarios.setJjmNivel(jjm_jCboNivel.getSelectedIndex());
 
@@ -53,7 +75,9 @@ public void beanView(JjmUsuarios jjmUsuarios) {
     jjm_jTxtNome.setText(jjmUsuarios.getJjmNome());
     jjm_jTxtApelido.setText(jjmUsuarios.getJjmApelido());
     jjm_jFmtCpf.setText(jjmUsuarios.getJjmCpf());
-    jjm_jFmtDataDenascimento.setText(Util.dateToStr(jjmUsuarios.getJjmDataNasc()));
+    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                String dataNasc = formato.format(jjmUsuarios.getJjmDataNasc());
+                jjm_jFmtDataDenascimento.setText(dataNasc);
     jjm_PwdSenha.setText(jjmUsuarios.getJjmSenha());
     jjm_jCboNivel.setSelectedIndex(jjmUsuarios.getJjmNivel());
 

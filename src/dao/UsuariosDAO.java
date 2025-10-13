@@ -17,7 +17,7 @@ import org.hibernate.criterion.Restrictions;
 public class UsuariosDAO extends AbstractDAO {
 
     public UsuariosDAO() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

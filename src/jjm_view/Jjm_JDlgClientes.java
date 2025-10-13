@@ -6,6 +6,13 @@ package jjm_view;
 
 import bean.JjmClientes;
 import dao.UsuariosDAO;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 import tools.Util;
 
 /**
@@ -18,7 +25,7 @@ public class Jjm_JDlgClientes extends javax.swing.JDialog {
      * Creates new form Jjm_JDlgClientes
      */
         private boolean incluir; 
-
+private MaskFormatter mascaraCpf, mascaraDataNasc;
      boolean pesquisando = false;
     public Jjm_JDlgClientes(java.awt.Frame parent, boolean modal) {
        super(parent, modal);
@@ -35,16 +42,42 @@ public class Jjm_JDlgClientes extends javax.swing.JDialog {
     jjm_jBtnConfirmar.setEnabled(false);
     jjm_jBtnCancelar.setEnabled(false);
 
-    }
+try {
+            mascaraDataNasc = new MaskFormatter("##/##/####");
+            jjm_jFmtDatadenascimento.setFormatterFactory(new DefaultFormatterFactory(mascaraDataNasc));
+        } catch (ParseException ex) {
+            Logger.getLogger(Jjm_JDlgClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+try {
+            mascaraDataNasc = new MaskFormatter("##/##/####");
+            jjm_jFmtDatadaultimacompra.setFormatterFactory(new DefaultFormatterFactory(mascaraDataNasc));
+        } catch (ParseException ex) {
+            Logger.getLogger(Jjm_JDlgClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            }
+    
+
+    
     public JjmClientes viewBean() {
     JjmClientes jjmClientes = new JjmClientes();
 
     jjmClientes.setJjmIdCliente(Util.strToInt(jjm_jTxtCodigo.getText()));
     jjmClientes.setJjmNome(jjm_jTxtNome.getText());
-    jjmClientes.setJjmDataNasc(Util.strToDate(jjm_jFmtDatadenascimento.getText()));
+SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    Date dataNasc = formato.parse(jjm_jFmtDatadenascimento.getText());
+                    jjmClientes.setJjmDataNasc(dataNasc);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Jjm_JDlgClientes.class.getName()).log(Level.SEVERE, null, ex);
+                }
     jjmClientes.setJjmCidade(jjm_jTxtCidade.getText());
     jjmClientes.setJjmFormaPagamento(jjm_jTxtFormadepagamento.getText());
-    jjmClientes.setJjmDataUltimaCompra(Util.strToDate(jjm_jFmtDatadaultimacompra.getText()));
+   try {
+                    Date dataNasc = formato.parse(jjm_jFmtDatadaultimacompra.getText());
+                    jjmClientes.setJjmDataUltimaCompra(dataNasc);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Jjm_JDlgClientes.class.getName()).log(Level.SEVERE, null, ex);
+                }
     jjmClientes.setJjmEmail(jjm_jTxtEmail.getText());
     jjmClientes.setJjmRg(jjm_jTxtRg.getText());
     jjmClientes.setJjmBairro(jjm_jTxtBairro.getText());
