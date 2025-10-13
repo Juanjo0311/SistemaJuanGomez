@@ -307,6 +307,8 @@ public void beanView(JjmProdutos jjmProdutos) {
 
         Util.habilitar(true, jjm_jBtnIncluir, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar);
         Util.habilitar(false, jjm_jBtnConfirmar, jjm_jBtnCancelar);
+        Util.limpar(jjm_jTxtProduto, jjm_jTxtNome, jjm_jTxtDescricao,
+                jjm_jTxtPreco, jjm_jFmtDatadecadastro, jjm_jTxtMarca, jjm_jTxtCategoria);
           
     }//GEN-LAST:event_jjm_jBtnConfirmarActionPerformed
 
@@ -352,6 +354,8 @@ public void beanView(JjmProdutos jjmProdutos) {
 
         Util.habilitar(true, jjm_jBtnIncluir, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar);
         Util.habilitar(false, jjm_jBtnConfirmar, jjm_jBtnCancelar);
+        Util.limpar(jjm_jTxtProduto, jjm_jTxtNome, jjm_jTxtDescricao,
+                jjm_jTxtPreco, jjm_jFmtDatadecadastro, jjm_jTxtMarca, jjm_jTxtCategoria);
            
     }//GEN-LAST:event_jjm_jBtnCancelarActionPerformed
 

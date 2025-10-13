@@ -328,7 +328,7 @@ public void beanView(JjmUsuarios jjmUsuarios) {
         Util.habilitar(true,jjm_jTxtApelido,jjm_jTxtCodigo,jjm_jTxtNome,jjm_PwdSenha,jjm_jChbAtivo,jjm_jFmtDataDenascimento,jjm_jFmtCpf,jjm_jCboNivel,jjm_jBtnConfirmar,jjm_jBtnCancelar );
          Util.habilitar(false, jjm_jBtnAlterar,jjm_jBtnExcluir,jjm_jBtnIncluir);
 
-Util.limpar(jjm_jTxtCodigo,jjm_jTxtNome,jjm_jTxtApelido);
+Util.limpar(jjm_jTxtApelido,jjm_jTxtCodigo,jjm_jTxtNome,jjm_PwdSenha,jjm_jChbAtivo,jjm_jFmtDataDenascimento,jjm_jFmtCpf,jjm_jCboNivel);
 jjm_jTxtCodigo.grabFocus();
         incluir = true;
     }//GEN-LAST:event_jjm_jBtnIncluirActionPerformed
@@ -360,11 +360,13 @@ jjm_jTxtCodigo.grabFocus();
         }
          Util.habilitar(true,jjm_jTxtApelido,jjm_jTxtCodigo,jjm_jTxtNome,jjm_PwdSenha,jjm_jChbAtivo,jjm_jFmtDataDenascimento,jjm_jFmtCpf,jjm_jCboNivel,jjm_jBtnConfirmar,jjm_jBtnCancelar );
          Util.habilitar(false, jjm_jBtnAlterar,jjm_jBtnExcluir,jjm_jBtnIncluir);
+         Util.limpar(jjm_jTxtApelido,jjm_jTxtCodigo,jjm_jTxtNome,jjm_PwdSenha,jjm_jChbAtivo,jjm_jFmtDataDenascimento,jjm_jFmtCpf,jjm_jCboNivel);
     }//GEN-LAST:event_jjm_jBtnConfirmarActionPerformed
 
     private void jjm_jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnCancelarActionPerformed
          Util.habilitar(false,jjm_jTxtApelido,jjm_jTxtCodigo,jjm_jTxtNome,jjm_PwdSenha,jjm_jChbAtivo,jjm_jFmtDataDenascimento,jjm_jFmtCpf,jjm_jCboNivel,jjm_jBtnConfirmar,jjm_jBtnCancelar );
          Util.habilitar(true, jjm_jBtnAlterar,jjm_jBtnExcluir,jjm_jBtnPesquisar,jjm_jBtnIncluir);
+         Util.limpar(jjm_jTxtApelido,jjm_jTxtCodigo,jjm_jTxtNome,jjm_PwdSenha,jjm_jChbAtivo,jjm_jFmtDataDenascimento,jjm_jFmtCpf,jjm_jCboNivel);
     }//GEN-LAST:event_jjm_jBtnCancelarActionPerformed
 
     private void jjm_jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnPesquisarActionPerformed

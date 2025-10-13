@@ -481,6 +481,10 @@ public void beanView(JjmClientes jjmClientes) {
         jjm_jBtnConfirmar, jjm_jBtnCancelar);
     Util.habilitar(false, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar, jjm_jBtnIncluir);
     incluir=false;
+    Util.limpar(jjm_jTxtNome, jjm_jFmtDatadenascimento, jjm_jTxtCidade, 
+        jjm_jTxtFormadepagamento, jjm_jFmtDatadaultimacompra, jjm_jTxtEmail, 
+        jjm_jTxtRg, jjm_jTxtBairro, jjm_jTxtSexo, jjm_jTxtTipodecliente, 
+        jjm_jTxtCep, jjm_jTxtTelefone, jjm_jTxtEndereco, jjm_jTxtEstado);
     }//GEN-LAST:event_jjm_jBtnAlterarActionPerformed
 
     private void jjm_jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnExcluirActionPerformed
@@ -491,8 +495,7 @@ public void beanView(JjmClientes jjmClientes) {
                 Util.limpar(  jjm_jTxtCodigo, jjm_jTxtNome, jjm_jFmtDatadenascimento, jjm_jTxtCidade, 
         jjm_jTxtFormadepagamento, jjm_jFmtDatadaultimacompra, jjm_jTxtEmail, 
         jjm_jTxtRg, jjm_jTxtBairro, jjm_jTxtSexo, jjm_jTxtTipodecliente, 
-        jjm_jTxtCep, jjm_jTxtTelefone, jjm_jTxtEndereco, jjm_jTxtEstado,
-        jjm_jBtnConfirmar, jjm_jBtnCancelar);  
+        jjm_jTxtCep, jjm_jTxtTelefone, jjm_jTxtEndereco, jjm_jTxtEstado);  
         } 
     }//GEN-LAST:event_jjm_jBtnExcluirActionPerformed
 
@@ -511,7 +514,10 @@ public void beanView(JjmClientes jjmClientes) {
         jjm_jBtnConfirmar, jjm_jBtnCancelar
     );
     Util.habilitar(true, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar, jjm_jBtnIncluir);
-       
+          Util.limpar(  jjm_jTxtCodigo, jjm_jTxtNome, jjm_jFmtDatadenascimento, jjm_jTxtCidade, 
+        jjm_jTxtFormadepagamento, jjm_jFmtDatadaultimacompra, jjm_jTxtEmail, 
+        jjm_jTxtRg, jjm_jTxtBairro, jjm_jTxtSexo, jjm_jTxtTipodecliente, 
+        jjm_jTxtCep, jjm_jTxtTelefone, jjm_jTxtEndereco, jjm_jTxtEstado);
     }//GEN-LAST:event_jjm_jBtnConfirmarActionPerformed
 
     private void jjm_jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnCancelarActionPerformed
@@ -524,6 +530,10 @@ public void beanView(JjmClientes jjmClientes) {
     );
     Util.habilitar(true, jjm_jBtnAlterar, jjm_jBtnExcluir, jjm_jBtnPesquisar, jjm_jBtnIncluir);
           
+          Util.limpar(  jjm_jTxtCodigo, jjm_jTxtNome, jjm_jFmtDatadenascimento, jjm_jTxtCidade, 
+        jjm_jTxtFormadepagamento, jjm_jFmtDatadaultimacompra, jjm_jTxtEmail, 
+        jjm_jTxtRg, jjm_jTxtBairro, jjm_jTxtSexo, jjm_jTxtTipodecliente, 
+        jjm_jTxtCep, jjm_jTxtTelefone, jjm_jTxtEndereco, jjm_jTxtEstado);
     }//GEN-LAST:event_jjm_jBtnCancelarActionPerformed
 
     private void jjm_jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jBtnPesquisarActionPerformed
@@ -571,7 +581,11 @@ public void beanView(JjmClientes jjmClientes) {
 jjm_jTxtCodigo.grabFocus();
         incluir = true;
 
-        
+      
+          Util.limpar(  jjm_jTxtCodigo, jjm_jTxtNome, jjm_jFmtDatadenascimento, jjm_jTxtCidade, 
+        jjm_jTxtFormadepagamento, jjm_jFmtDatadaultimacompra, jjm_jTxtEmail, 
+        jjm_jTxtRg, jjm_jTxtBairro, jjm_jTxtSexo, jjm_jTxtTipodecliente, 
+        jjm_jTxtCep, jjm_jTxtTelefone, jjm_jTxtEndereco, jjm_jTxtEstado);
        
     }//GEN-LAST:event_jjm_jBtnIncluirActionPerformed
 

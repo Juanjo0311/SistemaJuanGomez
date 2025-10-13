@@ -44,7 +44,7 @@ public class JjmVenda  implements java.io.Serializable {
        this.jjmValorTotal = jjmValorTotal;
     }
    
-     @Id @GeneratedValue(strategy=IDENTITY)
+     @Id
 
     
     @Column(name="jjm_id_venda", unique=true, nullable=false)
