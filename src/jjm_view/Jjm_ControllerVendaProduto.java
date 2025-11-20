@@ -57,7 +57,7 @@ public class Jjm_ControllerVendaProduto extends AbstractTableModel {
         } else if (columnIndex ==3) {
             return jjmVendaProdutos.getJjmValorUnitario();
         } else if (columnIndex ==4) {
-            return jjmVendaProdutos.getJjmQuantidade()* jjmVendaProdutos.getJjmValorUnitario();
+            return jjmVendaProdutos.getJjmQuantidade() * jjmVendaProdutos.getJjmValorUnitario();
         }
         return "";
         

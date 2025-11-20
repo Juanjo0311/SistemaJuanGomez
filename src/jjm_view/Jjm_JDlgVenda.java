@@ -82,7 +82,9 @@ timer.start();
 
     public JjmVenda viewBean() {
         JjmVenda jjmvendas = new JjmVenda();
-       jjmvendas.setJjmIdVenda(Util.strToInt(jTxtCodigo.getText()));
+     String id = jTxtCodigo.getText().trim();
+jjmvendas.setJjmIdVenda(id.isEmpty() ? 0 : Util.strToInt(id));
+
        jjmvendas.setJjmClientes((JjmClientes) jCboClientes.getSelectedItem() );
        jjmvendas.setJjmVendedor((JjmVendedor) jCboVendedor.getSelectedItem());
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
