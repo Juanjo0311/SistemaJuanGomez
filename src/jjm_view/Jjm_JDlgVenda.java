@@ -397,10 +397,14 @@ timer.start();
 
     private void jBtnExcluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirProdActionPerformed
         // TODO add your handling code here:
-        if (Util.perguntar("Deseja excluir o produto ?") == true) {
-
-        }
-           Util.limpar( jTxtCodigo, jFmtData, jCboClientes, jCboVendedor, jTxtTotal);
+      int rowIndex = jTable2.getSelectedRow();
+                if (rowIndex == -1) {
+                    Util.mensagem("Selecione uma linhaaa primeiro");
+                    return;
+                }
+                if (Util.perguntar("Deseja Excluir?") == true) {
+                    controllerVendaProdutos.removeBean(rowIndex);
+                }
     }//GEN-LAST:event_jBtnExcluirProdActionPerformed
 
     private void jBtnAlterarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarProdActionPerformed

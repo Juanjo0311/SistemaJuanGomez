@@ -33,15 +33,19 @@ public class JjmVenda  implements java.io.Serializable {
      private JjmVendedor jjmVendedor;
      private Date jjmDataVenda;
      private double jjmValorTotal;
+     private double jjmTotal;
+
 
     public JjmVenda() {
     }
 
-    public JjmVenda(JjmClientes jjmClientes, JjmVendedor jjmVendedor, Date jjmDataVenda, double jjmValorTotal, Set jjmVendaProdutoses) {
+    public JjmVenda(JjmClientes jjmClientes, JjmVendedor jjmVendedor, Date jjmDataVenda, double jjmValorTotal, Set jjmVendaProdutoses,double jjmTotal) {
        this.jjmClientes = jjmClientes;
        this.jjmVendedor = jjmVendedor;
        this.jjmDataVenda = jjmDataVenda;
        this.jjmValorTotal = jjmValorTotal;
+       this.jjmTotal = jjmTotal;
+
     }
    
      @Id
@@ -95,7 +99,15 @@ public class JjmVenda  implements java.io.Serializable {
     public void setJjmValorTotal(double jjmValorTotal) {
         this.jjmValorTotal = jjmValorTotal;
     }
+  
+    @Column(name="jjmTotal")
+    public double getJjmTotal() {
+    return this.jjmTotal;
+    }
 
+    public void setJjmTotal(double jjmTotal) {
+    this.jjmTotal = jjmTotal;
+    }
 
 
 

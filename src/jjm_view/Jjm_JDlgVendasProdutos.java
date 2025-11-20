@@ -88,7 +88,19 @@ Jjm_JDlgVenda jjm_JDlgVenda;
 
         jjm_JblProdutos.setText("Produtos");
 
+        jjm_jCboProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jjm_jCboProdutosActionPerformed(evt);
+            }
+        });
+
         jjm_JblQuantidade.setText("Quantidade");
+
+        jjm_jTxtQuantidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jjm_jTxtQuantidadeActionPerformed(evt);
+            }
+        });
 
         jjm_JblValorunitario.setText("Valor Unitário");
 
@@ -190,6 +202,8 @@ Jjm_JDlgVenda jjm_JDlgVenda;
         jjmVendaProdutos.setJjmValorUnitario(Util.strToDuble(jjm_JtxtValorunitario.getText()));
         jjm_JDlgVenda.controllerVendaProdutos.addBean(jjmVendaProdutos);
        
+  
+      
         setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 
@@ -197,6 +211,26 @@ Jjm_JDlgVenda jjm_JDlgVenda;
         // TODO add your handling code here:
         setVisible(false);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
+
+    private void jjm_jCboProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jCboProdutosActionPerformed
+        // TODO add your handling code here:
+        
+         JjmProdutos jjmProdutos = (JjmProdutos) jjm_jCboProdutos.getSelectedItem();
+        jjm_JblValorunitario.setText(Util.doubleToStr(jjmProdutos.getJjmPreco()));
+        int quant = Util.strToInt(jjm_jTxtQuantidade.getText());
+        jjm_JtxtTotal.setText(Util.doubleToStr(quant*jjmProdutos.getJjmPreco()));
+    }//GEN-LAST:event_jjm_jCboProdutosActionPerformed
+
+    private void jjm_jTxtQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jTxtQuantidadeActionPerformed
+        // TODO add your handling code here:
+          if (jjm_jTxtQuantidade.getText().isEmpty()){
+            jjm_JtxtTotal.setText("");
+        } else {
+        JjmProdutos jjmProdutos = (JjmProdutos) jjm_jCboProdutos.getSelectedItem();
+        int quant = Util.strToInt(jjm_jTxtQuantidade.getText());
+        jjm_JtxtTotal.setText(Util.doubleToStr(quant*jjmProdutos.getJjmPreco()));
+        }
+    }//GEN-LAST:event_jjm_jTxtQuantidadeActionPerformed
 
     /**
      * @param args the command line arguments
