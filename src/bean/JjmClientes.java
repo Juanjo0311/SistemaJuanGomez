@@ -216,7 +216,21 @@ public class JjmClientes  implements java.io.Serializable {
         this.jjmBairro = jjmBairro;
     }
 
-
+ @Override
+    public String toString(){
+        return this.jjmNome;
+    }
+    
+     @Override
+        public boolean equals(Object object){
+        if (object instanceof JjmClientes){
+            JjmClientes clientes = (JjmClientes)object;
+            if (this.getJjmIdCliente()== clientes.getJjmIdCliente()){
+                return true;
+            }
+        }
+         return false;
+    }
 
 
 

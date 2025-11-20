@@ -5,35 +5,63 @@
  */
 package jjm_view;
 
+import bean.JjmProdutos;
+import bean.JjmVenda;
+import bean.JjmVendaProdutos;
+import dao.ProdutosDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import javax.swing.Timer;
+import tools.Util;
 
 /**
  *
  * @author u1845853
  */
 public class Jjm_JDlgVendasProdutos extends javax.swing.JDialog {
+     Jjm_ControllerVendaProduto controllerVendaProdutos;
 
+Jjm_JDlgVenda jjm_JDlgVenda;
     /**
      * Creates new form JDlgPedidosProdutos
      */
     public Jjm_JDlgVendasProdutos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();
+       initComponents();
+        setTitle("Vendas Produtos");
         setLocationRelativeTo(null);
+        Util.habilitar(false, jjm_JtxtValorunitario, jjm_JtxtTotal);
+        jjm_jTxtQuantidade.setText("1");
+        ProdutosDAO produtosDAO = new ProdutosDAO();
+        List lista = (List) produtosDAO.listAll();
+        for (Object object : lista) {
+            jjm_jCboProdutos.addItem((JjmProdutos) object);
+        }
+    }
+    
+    
+    public void setTelaAnterior(Jjm_JDlgVenda jjm_JDlgVenda){
+        this.jjm_JDlgVenda = jjm_JDlgVenda;
+    
+    }
            Timer timer = new Timer(1000, new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
         Date agora = new Date();
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
         jLabel5.setText(formato.format(agora));
+        
+          timer.start();
+
     }
+  
+        
 });
-timer.start();
-    }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,27 +72,27 @@ timer.start();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jjm_JblProdutos = new javax.swing.JLabel();
+        jjm_jCboProdutos = new javax.swing.JComboBox<JjmProdutos>();
+        jjm_JblQuantidade = new javax.swing.JLabel();
+        jjm_jTxtQuantidade = new javax.swing.JTextField();
+        jjm_JtxtValorunitario = new javax.swing.JTextField();
+        jjm_JblValorunitario = new javax.swing.JLabel();
+        jjmJblTotal = new javax.swing.JLabel();
+        jjm_JtxtTotal = new javax.swing.JTextField();
         jBtnOk = new javax.swing.JButton();
         jBtnCancelar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Produtos");
+        jjm_JblProdutos.setText("Produtos");
 
-        jLabel2.setText("Quantidade");
+        jjm_JblQuantidade.setText("Quantidade");
 
-        jLabel3.setText("Valor Unitário");
+        jjm_JblValorunitario.setText("Valor Unitário");
 
-        jLabel4.setText("Total");
+        jjmJblTotal.setText("Total");
 
         jBtnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ok.png"))); // NOI18N
         jBtnOk.setText("Ok");
@@ -89,24 +117,24 @@ timer.start();
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(jjm_JblProdutos)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jjm_JblQuantidade)
+                                .addComponent(jjm_jTxtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jjm_JblValorunitario)
+                                .addComponent(jjm_JtxtValorunitario, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(35, 35, 35)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jjmJblTotal)
+                                .addComponent(jjm_JtxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(0, 0, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jjm_jCboProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -119,26 +147,26 @@ timer.start();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jjm_JblProdutos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jjm_jCboProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2)
+                        .addComponent(jjm_JblQuantidade)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jjm_jTxtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(jjm_JblValorunitario)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jjm_JtxtValorunitario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(jjmJblTotal)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jjm_JtxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
@@ -156,6 +184,12 @@ timer.start();
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
+         JjmVendaProdutos jjmVendaProdutos = new JjmVendaProdutos();
+        jjmVendaProdutos.setJjmProdutos((JjmProdutos) jjm_jCboProdutos.getSelectedItem());
+        jjmVendaProdutos.setJjmQuantidade(Util.strToInt(jjm_jTxtQuantidade.getText()));
+        jjmVendaProdutos.setJjmValorUnitario(Util.strToDuble(jjm_JtxtValorunitario.getText()));
+        jjm_JDlgVenda.controllerVendaProdutos.addBean(jjmVendaProdutos);
+       
         setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 
@@ -212,14 +246,14 @@ timer.start();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnCancelar;
     private javax.swing.JButton jBtnOk;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel jjmJblTotal;
+    private javax.swing.JLabel jjm_JblProdutos;
+    private javax.swing.JLabel jjm_JblQuantidade;
+    private javax.swing.JLabel jjm_JblValorunitario;
+    private javax.swing.JTextField jjm_JtxtTotal;
+    private javax.swing.JTextField jjm_JtxtValorunitario;
+    private javax.swing.JComboBox<JjmProdutos> jjm_jCboProdutos;
+    private javax.swing.JTextField jjm_jTxtQuantidade;
     // End of variables declaration//GEN-END:variables
 }

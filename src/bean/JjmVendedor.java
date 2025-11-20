@@ -119,7 +119,21 @@ public class JjmVendedor  implements java.io.Serializable {
         this.jjmEndereco = jjmEndereco;
     }
 
-
+  @Override
+    public String toString(){
+        return this.jjmNome;
+    }
+    
+     @Override
+    public boolean equals(Object object){
+        if (object instanceof JjmVendedor){
+            JjmVendedor vendedor = (JjmVendedor)object;
+            if (this.getJjmIdVendedor() == vendedor.getJjmIdVendedor()){
+                return true;
+            }
+        }
+         return false;
+    }
 
 
 

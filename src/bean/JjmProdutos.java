@@ -119,7 +119,20 @@ public String getJjmMarca() {
         this.jjmCategoria = jjmCategoria;
     }
 
-
+ @Override
+    public String toString(){
+        return this.jjmNome;
+    }
+     @Override
+            public boolean equals(Object object){
+        if (object instanceof JjmProdutos){
+            JjmProdutos produtos = (JjmProdutos)object;
+            if (this.getJjmIdProduto()== produtos.getJjmIdProduto()){
+                return true;
+            }
+        }
+         return false;
+    }
 
 
 
