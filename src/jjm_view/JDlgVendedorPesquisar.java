@@ -4,9 +4,11 @@
  */
 package jjm_view;
 
+import bean.JjmVenda;
 import java.util.List;
 import bean.JjmVendedor;
 import dao.VendedorDAO;
+import tools.Util;
 
 public class JDlgVendedorPesquisar extends javax.swing.JDialog {
        Jjm_ControllerVendedor controllerVendedor;
@@ -61,6 +63,11 @@ public class JDlgVendedorPesquisar extends javax.swing.JDialog {
         jScrollPane1.setViewportView(jTable1);
 
         JBtnOk.setText("Ok");
+        JBtnOk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JBtnOkMouseClicked(evt);
+            }
+        });
         JBtnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBtnOkActionPerformed(evt);
@@ -85,18 +92,28 @@ public class JDlgVendedorPesquisar extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(JBtnOk)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnOkActionPerformed
-        int linSel = jTable1.getSelectedRow();
-        JjmVendedor usuarios = (JjmVendedor) controllerVendedor.getBean(linSel);
-        jDlgVendedor.beanView(usuarios);
-        setVisible(false);// TODO add your handling code here:
+           if (jTable1.getSelectedRow() == -1){
+            Util.mensagem("Selecione pois a taylor swift mandou");
+        } else {
+        JjmVendedor jjmVendedor =  (JjmVendedor) controllerVendedor.getBean( jTable1.getSelectedRow() );
+        jDlgVendedor.beanView(jjmVendedor);
+        this.setVisible(false);
+      }
     }//GEN-LAST:event_JBtnOkActionPerformed
+
+    private void JBtnOkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBtnOkMouseClicked
+        // TODO add your handling code here:
+             if (evt.getClickCount() == 2){
+          JBtnOkActionPerformed(null);
+        }
+    }//GEN-LAST:event_JBtnOkMouseClicked
 
     /**
      * @param args the command line arguments

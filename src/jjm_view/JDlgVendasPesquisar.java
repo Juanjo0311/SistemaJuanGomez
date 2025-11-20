@@ -8,6 +8,8 @@ import bean.JjmVenda;
 import dao.VendaDAO;
 import java.util.List;
 import bean.JjmClientes;
+import bean.JjmUsuarios;
+import tools.Util;
 //import jjm_dao.Jjm_ClientesDAO;
 
 public class JDlgVendasPesquisar extends javax.swing.JDialog {
@@ -60,6 +62,11 @@ public class JDlgVendasPesquisar extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         JBtnOk.setText("Ok");
@@ -94,11 +101,21 @@ public class JDlgVendasPesquisar extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnOkActionPerformed
-        int linSel = jTable1.getSelectedRow();
-        JjmVenda Vendas = (JjmVenda) Jjm_ControllerVenda.getBean(linSel);
-        jDlgVenda.beanView(Vendas);
-        setVisible(false);// TODO add your handling code here:
+         if (jTable1.getSelectedRow() == -1){
+            Util.mensagem("Selecione pois a taylor swift mandou");
+        } else {
+        JjmVenda jjmVenda =  (JjmVenda) Jjm_ControllerVenda.getBean( jTable1.getSelectedRow() );
+        jDlgVenda.beanView(jjmVenda);
+        this.setVisible(false);
+      }
     }//GEN-LAST:event_JBtnOkActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+          if (evt.getClickCount() == 2){
+          JBtnOkActionPerformed(null);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

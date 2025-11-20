@@ -4,9 +4,11 @@
  */
 package jjm_view;
 
+import bean.JjmClientes;
 import java.util.List;
 import bean.JjmProdutos;
 import dao.ProdutosDAO;
+import tools.Util;
 
 public class JDlgProdutoPesquisar extends javax.swing.JDialog {
         Jjm_ControllerProduto controllerProduto;
@@ -58,6 +60,11 @@ public class JDlgProdutoPesquisar extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         JBtnOk.setText("Ok");
@@ -85,7 +92,7 @@ public class JDlgProdutoPesquisar extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(JBtnOk)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -97,6 +104,18 @@ public class JDlgProdutoPesquisar extends javax.swing.JDialog {
        jDlgProdutos.beanView(produto);
         setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_JBtnOkActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+      if (jTable1.getSelectedRow() == -1){
+            Util.mensagem("Selecione pois a taylor swift mandou");
+        } else {
+        JjmProdutos jjmProdutos =  (JjmProdutos) controllerProduto.getBean( jTable1.getSelectedRow() );
+        jDlgProdutos.beanView(jjmProdutos);
+        this.setVisible(false);
+      }
+
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
