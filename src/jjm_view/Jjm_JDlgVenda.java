@@ -109,6 +109,14 @@ jjmvendas.setJjmIdVenda(id.isEmpty() ? 0 : Util.strToInt(id));
     jTxtTotal.setText(Util.doubleToStr(jjmVenda.getJjmValorTotal()));
 
     }
+public void TotaisdaTaylor() {
+        double total = 0;
+        for (int i = 0; i < jTable2.getRowCount(); i++) {
+            Double valor = (Double) jTable2.getValueAt(i, 4);
+            total += valor;
+        }
+        jTxtTotal.setText(String.valueOf(total));
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -401,12 +409,13 @@ jjmvendas.setJjmIdVenda(id.isEmpty() ? 0 : Util.strToInt(id));
         // TODO add your handling code here:
       int rowIndex = jTable2.getSelectedRow();
                 if (rowIndex == -1) {
-                    Util.mensagem("Selecione uma linhaaa primeiro");
+                    Util.mensagem("Selecione uma linha pois a Taylor mandou ");
                     return;
                 }
                 if (Util.perguntar("Deseja Excluir?") == true) {
                     controllerVendaProdutos.removeBean(rowIndex);
                 }
+                TotaisdaTaylor();
     }//GEN-LAST:event_jBtnExcluirProdActionPerformed
 
     private void jBtnAlterarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarProdActionPerformed
@@ -423,7 +432,7 @@ jjmvendas.setJjmIdVenda(id.isEmpty() ? 0 : Util.strToInt(id));
        jDlgVenda_Produto.setTelaAnterior(this);   
 
        jDlgVenda_Produto.setVisible(true);
-          Util.limpar( jTxtCodigo, jFmtData, jCboClientes, jCboVendedor, jTxtTotal);
+          TotaisdaTaylor();
     }//GEN-LAST:event_jBtnIncluirProdActionPerformed
 
     /**

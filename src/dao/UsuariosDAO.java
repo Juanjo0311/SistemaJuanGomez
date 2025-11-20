@@ -63,6 +63,17 @@ public class UsuariosDAO extends AbstractDAO {
         session.getTransaction().commit();
         return lista;
     }
+public boolean logindataylor(String user, String pass) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(JjmUsuarios.class);
+        criteria.add(Restrictions.eq("jjmNome", user));
+        criteria.add(Restrictions.eq("jjmSenha", pass));
+
+        List resultado = criteria.list();
+        session.getTransaction().commit();
+
+        return !resultado.isEmpty();
+}
 
     public static void main(String[] args) {
         UsuariosDAO usuariosDAO = new UsuariosDAO();
