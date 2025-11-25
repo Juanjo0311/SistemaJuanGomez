@@ -8,8 +8,10 @@ package jjm_view;
 import dao.ClientesDAO;
 import bean.JjmClientes;
 import bean.JjmVenda;
+import bean.JjmVendaProdutos;
 import bean.JjmVendedor;
 import dao.VendaDAO;
+import dao.VendaProdutoDAO;
 import dao.VendedorDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -107,6 +109,9 @@ jjmvendas.setJjmIdVenda(id.isEmpty() ? 0 : Util.strToInt(id));
                 
     jCboVendedor.setSelectedItem(jjmVenda.getJjmVendedor());
     jTxtTotal.setText(Util.doubleToStr(jjmVenda.getJjmValorTotal()));
+    VendaProdutoDAO vendaProdutoDAO = new VendaProdutoDAO();
+        List lista = (List) vendaProdutoDAO.listProdutos(jjmVenda);
+        controllerVendaProdutos.setList(lista);
 
     }
 public void TotaisdaTaylor() {
@@ -357,6 +362,8 @@ public void TotaisdaTaylor() {
                 jBtnConfirmar, jBtnCancelar, jBtnIncluirProd, jBtnAlterarProd, jBtnExcluirProd);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         Util.limpar(jTxtCodigo, jFmtData, jCboClientes, jCboVendedor, jTxtTotal);
+                          controllerVendaProdutos.setList(new ArrayList());
+
    jTxtCodigo.grabFocus();
    incluir = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
@@ -371,24 +378,42 @@ public void TotaisdaTaylor() {
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-      if (Util.perguntar("Deseja Excluir?") == true) {
-           VendaDAO vendaDAO = new VendaDAO();
-           vendaDAO.delete(viewBean());
-      }
+     if (Util.perguntar("Deseja realmente excluir o registro?")) {
+            VendaDAO vendaDAO = new VendaDAO();
+            VendaProdutoDAO vendaProdutoDAO = new VendaProdutoDAO();
+            JjmVenda jjmVenda = viewBean();
+            for (int ind = 0; ind < jTable2.getRowCount(); ind++){
+                JjmVendaProdutos jjmVendaProdutos = controllerVendaProdutos.getBean(ind);
+                vendaProdutoDAO.delete(jjmVendaProdutos);
+            }
+            vendaDAO.delete(jjmVenda);
+        }
        Util.limpar( jTxtCodigo, jFmtData, jCboClientes, jCboVendedor, jTxtTotal);
+       controllerVendaProdutos.setList(new ArrayList());
+        jTxtCodigo.grabFocus();
+
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
-       VendaDAO vendaDAO = new VendaDAO();
-        if (incluir == true) {
-             vendaDAO.insert(viewBean());
+        VendaDAO vendaDAO = new VendaDAO();
+        VendaProdutoDAO vendaProdutoDAO = new VendaProdutoDAO();
+        JjmVenda jjmVenda = viewBean();
+        if (incluir == true){
+            vendaDAO.insert(jjmVenda);
+            for (int ind = 0; ind < jTable2.getRowCount(); ind++){
+                JjmVendaProdutos jjmVendaProdutos = controllerVendaProdutos.getBean(ind);
+                jjmVendaProdutos.setJjmVenda(jjmVenda);
+                vendaProdutoDAO.insert(jjmVendaProdutos);
+            }
         } else {
-           vendaDAO.update(viewBean());
-       }
+            vendaProdutoDAO.update(jjmVenda);
+        }
        Util.habilitar(false, jTxtCodigo, jFmtData, jCboClientes, jCboVendedor, jTxtTotal, jBtnConfirmar, jBtnCancelar);
        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
           Util.limpar( jTxtCodigo, jFmtData, jCboClientes, jCboVendedor, jTxtTotal);
+                  controllerVendaProdutos.setList(new ArrayList());
+
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
@@ -396,6 +421,7 @@ public void TotaisdaTaylor() {
        Util.habilitar(false, jTxtCodigo, jTxtCodigo, jFmtData, jCboClientes, jCboVendedor, jTxtTotal, jBtnConfirmar, jBtnCancelar);
        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
           Util.limpar( jTxtCodigo, jFmtData, jCboClientes, jCboVendedor, jTxtTotal);
+          
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed

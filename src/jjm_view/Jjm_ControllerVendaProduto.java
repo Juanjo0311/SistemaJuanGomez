@@ -19,9 +19,11 @@ public class Jjm_ControllerVendaProduto extends AbstractTableModel {
     
     public void setList(List lstVendasProdutos){
      this.lstVendasProdutos = lstVendasProdutos;  
+    this.fireTableDataChanged();
+
     }
     
-    public Object getBean(int rowIndex){
+    public JjmVendaProdutos getBean(int rowIndex){
         return (JjmVendaProdutos) lstVendasProdutos.get(rowIndex);
     }
     
