@@ -101,6 +101,7 @@ public class Jjm_JFrmPrincipal extends javax.swing.JFrame {
         jMenu2.setText("Movimento");
 
         jMnuVendas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
+        jMnuVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/4078872.png"))); // NOI18N
         jMnuVendas.setText("Vendas");
         jMnuVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,6 +175,9 @@ public class Jjm_JFrmPrincipal extends javax.swing.JFrame {
 
     private void jMnuVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuVendasActionPerformed
         // TODO add your handling code here:
+          Jjm_JDlgVenda dlg = new Jjm_JDlgVenda(this, true); 
+        dlg.setLocationRelativeTo(this); 
+        dlg.setVisible(true);
        
     }//GEN-LAST:event_jMnuVendasActionPerformed
 
