@@ -23,6 +23,7 @@ import tools.Util;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
 import javax.swing.Timer;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
@@ -101,6 +102,7 @@ jjmvendas.setJjmIdVenda(id.isEmpty() ? 0 : Util.strToInt(id));
     }
     
     public void beanView(JjmVenda jjmVenda) {
+         jTxtCodigo.setText(Util.intToStr(jjmVenda.getJjmIdVenda()));
         jCboClientes.setSelectedItem(jjmVenda.getJjmIdVenda());
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
                 String dataNasc = formato.format(jjmVenda.getJjmDataVenda());
@@ -121,6 +123,9 @@ public void TotaisdaTaylor() {
             total += valor;
         }
         jTxtTotal.setText(String.valueOf(total));
+    }
+ public JTable getjTable1() {
+        return jTable2;
     }
 
     /**
@@ -370,8 +375,8 @@ public void TotaisdaTaylor() {
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true, jTxtCodigo, jFmtData, jCboClientes, jCboVendedor, jTxtTotal, jBtnConfirmar, jBtnCancelar);
-       Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.habilitar(true, jFmtData, jCboClientes, jCboVendedor, jBtnConfirmar, jBtnCancelar, jBtnAlterarProd, jBtnIncluirProd,jBtnExcluirProd);
+       Util.habilitar(false,jTxtCodigo, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
        jTxtCodigo.grabFocus();
         incluir = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
@@ -408,9 +413,15 @@ public void TotaisdaTaylor() {
             }
         } else {
             vendaProdutoDAO.update(jjmVenda);
+            vendaProdutoDAO.deleteVenda(jjmVenda);
+            for (int ind = 0; ind < jTable2.getRowCount(); ind++){
+                JjmVendaProdutos jjmVendaProdutos = controllerVendaProdutos.getBean(ind);
+                jjmVendaProdutos.setJjmVenda(jjmVenda);
+                vendaProdutoDAO.insert(jjmVendaProdutos);
+            }
         }
        Util.habilitar(false, jTxtCodigo, jFmtData, jCboClientes, jCboVendedor, jTxtTotal, jBtnConfirmar, jBtnCancelar);
-       Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+       Util.habilitar(true,jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
           Util.limpar( jTxtCodigo, jFmtData, jCboClientes, jCboVendedor, jTxtTotal);
                   controllerVendaProdutos.setList(new ArrayList());
 
@@ -447,7 +458,9 @@ public void TotaisdaTaylor() {
     private void jBtnAlterarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarProdActionPerformed
         // TODO add your handling code here:
         Jjm_JDlgVendasProdutos jDlgVendaProdutos = new Jjm_JDlgVendasProdutos(null, true);
-        jDlgVendaProdutos.setTelaAnterior(this);   
+         JjmVendaProdutos jjmVendaProdutos = controllerVendaProdutos.getBean(jTable2.getSelectedRow());
+
+        jDlgVendaProdutos.setTelaAnterior(this,jjmVendaProdutos);   
 
         jDlgVendaProdutos.setVisible(true);
     }//GEN-LAST:event_jBtnAlterarProdActionPerformed
@@ -455,7 +468,7 @@ public void TotaisdaTaylor() {
     private void jBtnIncluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirProdActionPerformed
         // TODO add your handling code here:
        Jjm_JDlgVendasProdutos jDlgVenda_Produto = new Jjm_JDlgVendasProdutos( null, true);
-       jDlgVenda_Produto.setTelaAnterior(this);   
+       jDlgVenda_Produto.setTelaAnterior(this,null);   
 
        jDlgVenda_Produto.setVisible(true);
           TotaisdaTaylor();

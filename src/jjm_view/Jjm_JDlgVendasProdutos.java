@@ -13,13 +13,16 @@ import bean.JjmProdutos;
 import bean.JjmVenda;
 import com.sun.corba.se.spi.logging.CORBALogDomains;
 import tools.Util;
+
 /**
  *
  * @author u11200121120
  */
 public class Jjm_JDlgVendasProdutos extends javax.swing.JDialog {
+     Jjm_ControllerVendaProduto controllerVendaProdutos;
 
      Jjm_JDlgVenda jDlgVendas;
+     private boolean incluir;
     /**
      * Creates new form JDlgPedidosProdutos
      */
@@ -37,8 +40,15 @@ public class Jjm_JDlgVendasProdutos extends javax.swing.JDialog {
         }
     }
     
-    public void setTelaAnterior(Jjm_JDlgVenda jDlgVendas){
+    public void setTelaAnterior(Jjm_JDlgVenda jDlgVendas , JjmVendaProdutos jjmVendaProduto){
         this.jDlgVendas = jDlgVendas;
+        incluir = true ;
+      
+        if(jjmVendaProduto != null){
+            incluir = false;
+        jCboProdutos.setSelectedItem(jjmVendaProduto.getJjmProdutos());
+        jTxtQuantidade.setText(Util.intToStr(jjmVendaProduto.getJjmQuantidade()));
+        }
     
     }
 
@@ -174,7 +184,16 @@ public class Jjm_JDlgVendasProdutos extends javax.swing.JDialog {
         pedidosProdutos.setJjmQuantidade(Util.strToInt(jTxtQuantidade.getText()));
         pedidosProdutos.setJjmValorUnitario(Util.strToDuble(jTxtValorUnitario.getText()));
         jDlgVendas.controllerVendaProdutos.addBean(pedidosProdutos);
+        if (incluir == false){
+            if (incluir == true) {
+           jDlgVendas.controllerVendaProdutos.addBean(pedidosProdutos);
+        } else {
+            jDlgVendas.controllerVendaProdutos.removeBean(jDlgVendas.getjTable1().getSelectedRow());
+            jDlgVendas.controllerVendaProdutos.addBean(pedidosProdutos);
+        }        
         setVisible(false);
+    }                                      
+
     }//GEN-LAST:event_jBtnOKActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
