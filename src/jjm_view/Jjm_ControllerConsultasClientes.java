@@ -47,7 +47,7 @@ public class Jjm_ControllerConsultasClientes extends AbstractTableModel {
             return clientes.getJjmNome();
         }
         if (columnIndex == 2){
-            return clientes.getJjm_ativo();
+            return clientes.getJjmAtivo();
         
         }
 
