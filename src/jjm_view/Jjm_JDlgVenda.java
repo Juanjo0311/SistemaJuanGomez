@@ -412,13 +412,9 @@ public void TotaisdaTaylor() {
                 vendaProdutoDAO.insert(jjmVendaProdutos);
             }
         } else {
-            vendaProdutoDAO.update(jjmVenda);
-            vendaProdutoDAO.deleteVenda(jjmVenda);
-            for (int ind = 0; ind < jTable2.getRowCount(); ind++){
-                JjmVendaProdutos jjmVendaProdutos = controllerVendaProdutos.getBean(ind);
-                jjmVendaProdutos.setJjmVenda(jjmVenda);
-                vendaProdutoDAO.insert(jjmVendaProdutos);
-            }
+                 vendaProdutoDAO.update(jjmVenda);
+
+          
         }
        Util.habilitar(false, jTxtCodigo, jFmtData, jCboClientes, jCboVendedor, jTxtTotal, jBtnConfirmar, jBtnCancelar);
        Util.habilitar(true,jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);

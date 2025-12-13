@@ -35,7 +35,11 @@ public class Jjm_JDlgVendedor extends javax.swing.JDialog {
 
     public Jjm_JDlgVendedor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+                setTitle("Cadastro de Vendedor");
+
         initComponents();
+                setLocationRelativeTo(null);
+
          Util.habilitar(false, jjm_jTxtVendedor, jjm_jTxtNome, jjm_jTxtEmail,
             jjm_jTxtTelefone, jjm_jFmtDatadecadastro, jjm_jTxtSalario, jjm_jTxtEndereco);
 

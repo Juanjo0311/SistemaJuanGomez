@@ -169,6 +169,8 @@ public void beanView(JjmClientes jjmClientes) {
         jjm_jBtnPesquisar = new javax.swing.JButton();
         jjm_jBtnIncluir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jjm_jCBoxAtivo = new javax.swing.JCheckBox();
+        jjm_jLblAtivo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -322,6 +324,14 @@ public void beanView(JjmClientes jjmClientes) {
             }
         });
 
+        jjm_jCBoxAtivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jjm_jCBoxAtivoActionPerformed(evt);
+            }
+        });
+
+        jjm_jLblAtivo.setText("Ativo");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -414,7 +424,12 @@ public void beanView(JjmClientes jjmClientes) {
                                     .addComponent(jjm_jTxtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jjm_jLblAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jjm_jCBoxAtivo)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -464,8 +479,12 @@ public void beanView(JjmClientes jjmClientes) {
                         .addComponent(jLblTelefone)
                         .addComponent(jLblEndereco)
                         .addComponent(jLblEstado)))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .addGap(5, 5, 5)
+                .addComponent(jjm_jLblAtivo)
+                .addGap(7, 7, 7)
+                .addComponent(jjm_jCBoxAtivo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jjm_jBtnIncluir)
@@ -644,6 +663,10 @@ jjm_jTxtCodigo.grabFocus();
        
     }//GEN-LAST:event_jjm_jBtnIncluirActionPerformed
 
+    private void jjm_jCBoxAtivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjm_jCBoxAtivoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jjm_jCBoxAtivoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -709,8 +732,10 @@ jjm_jTxtCodigo.grabFocus();
     private javax.swing.JButton jjm_jBtnExcluir;
     private javax.swing.JButton jjm_jBtnIncluir;
     private javax.swing.JButton jjm_jBtnPesquisar;
+    private javax.swing.JCheckBox jjm_jCBoxAtivo;
     private javax.swing.JFormattedTextField jjm_jFmtDatadaultimacompra;
     private javax.swing.JFormattedTextField jjm_jFmtDatadenascimento;
+    private javax.swing.JLabel jjm_jLblAtivo;
     private javax.swing.JTextField jjm_jTxtBairro;
     private javax.swing.JTextField jjm_jTxtCep;
     private javax.swing.JTextField jjm_jTxtCidade;

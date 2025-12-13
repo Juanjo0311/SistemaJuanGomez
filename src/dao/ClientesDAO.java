@@ -50,6 +50,33 @@ public class ClientesDAO extends AbstractDAO {
         session.getTransaction().commit();
         return lista;
     }
+     public Object listNomes(String nome) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(JjmClientes.class);
+        criteria.add(Restrictions.like("jjm_nome", "%" + nome + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+        
+        public Object listAtivo(String ativo) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(JjmClientes.class);
+        criteria.add(Restrictions.eq("jjm_ativo", ativo));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+
+    public Object listNomeAtivo(String nome, String ativo) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(JjmClientes.class);
+        criteria.add(Restrictions.like("jjm_nome", "%" + nome + "%"));
+        criteria.add(Restrictions.eq("jjm_ativo", ativo));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
 
     @Override
     public Object listAll() {
