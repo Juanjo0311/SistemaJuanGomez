@@ -1,19 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
 import bean.JjmVendedor;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
-/**
- *
- * @author u1845853
- */
 public class VendedorDAO extends AbstractDAO {
 
     @Override
@@ -45,12 +37,13 @@ public class VendedorDAO extends AbstractDAO {
     public Object list(int codigo) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(JjmVendedor.class);
-        criteria.add(Restrictions.eq("jjm_id_vendedor", codigo) );
+        criteria.add(Restrictions.eq("jjm_id_vendedor", codigo));
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;
     }
-  public Object listNome(String jjm_nome) {
+
+    public Object listNome(String jjm_nome) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(JjmVendedor.class);
         criteria.add(Restrictions.like("jjm_nome", "%" + jjm_nome + "%"));
@@ -58,17 +51,17 @@ public class VendedorDAO extends AbstractDAO {
         session.getTransaction().commit();
         return lista;
     }
-        
-    public Object listDatadeCadastroDaTaylor(int datadecadastro) {
+
+    public Object listDatadeCadastroDaTaylor(Date datadecadastro) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(JjmVendedor.class);
-        criteria.add(Restrictions.ge("jjm_data_cadrastro",datadecadastro ));
+        criteria.add(Restrictions.ge("jjm_data_cadrastro", datadecadastro));
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;
     }
-    
-    public Object listNomeDataTrabalhoTaylor(String jjm_nome , int datadecadastro) {
+
+    public Object listNomeDataTrabalhoTaylor(String jjm_nome, Date datadecadastro) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(JjmVendedor.class);
         criteria.add(Restrictions.like("jjm_nome", "%" + jjm_nome + "%"));
